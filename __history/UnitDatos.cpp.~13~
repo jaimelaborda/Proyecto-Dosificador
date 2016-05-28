@@ -1,0 +1,108 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "UnitDatos.h"
+#include <stdio.h>
+#include <string.h>
+
+//VALVULA-----------------------------------------------------------------------
+
+void CValvula::Abrir (void) {estado_valvula = true;}
+void CValvula::Cerrar (void) {estado_valvula = false;}
+bool CValvula::ToggleValvula (void) {estado_valvula = !estado_valvula; return estado_valvula;}
+bool CValvula::EstadoValvula (void) {return estado_valvula;}
+
+//DEPOSITO----------------------------------------------------------------------
+
+void CDeposito::Cantidad (int _cantidad)
+{
+	cantidad = _cantidad;
+}
+
+int CDeposito::Cantidad (void)
+{
+	return (cantidad);
+}
+
+void CDeposito::Color (TColor _color)
+{
+	color = _color;
+}
+
+TColor CDeposito::Color (void)
+{
+	return color;
+}
+
+//FORMULAS--------------------------------------------------------------------
+
+void CFormula::IdFormula(int _id_formula)
+{
+	id_formula = _id_formula;
+}
+int CFormula::IdFormula(void)
+{
+	return id_formula;
+}
+void CFormula::IdMateria(int pos, int _id_materia)
+{
+	id_materia[pos] = _id_materia;
+}
+int CFormula::IdMateria(int pos)
+{
+	return id_materia[pos];
+}
+void CFormula::Proporcion(int pos, double _proporcion)
+{
+	proporcion[pos] = _proporcion;;
+}
+double CFormula::Proporcion(int pos)
+{
+	return proporcion[pos];
+}
+void CFormula::Nombre(char *_nombre)
+{
+	strcpy(_nombre, nombre);
+}
+char* CFormula::Nombre(void)
+{
+	return nombre;
+}
+void CFormula::GuardarArchivo(void)
+{
+	FILE* F;
+	int id;
+
+	F = fopen("file_formulas.txt", "a+");
+
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	while (!feof(F))
+	{
+		fscanf(F, "%d", id);
+		if (id == id_formula) {        //ESTA MAL DA ERROR
+			fprintf(F, "%d %s %d %.2f %d %.2f %d %.2f %s\n", id_formula, nombre, id_materia[0], proporcion[0], id_materia[1], proporcion[1], id_materia[2], proporcion[2], descripcion);
+		}
+	}
+
+
+	fclose(F);
+
+
+}
+
+
+//BASCULA-----------------------------------------------------------------------
+void CBascula::Peso (double _peso ){peso = _peso;}
+double CBascula::Peso (void) {return peso;}
+
+//MATERIA-----------------------------------------------------------------------
+
+//FORMULA-----------------------------------------------------------------------
+CDeposito deposito[5];
+CMateria materia[5];
+CFormula formula[5];
+CBascula bascula;
+//---------------------------------------------------------------------------
+#pragma package(smart_init)

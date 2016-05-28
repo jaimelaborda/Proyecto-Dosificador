@@ -1,0 +1,42 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "UnitSimulacion.h"
+#include "UnitDatos.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFormSimulacion *FormSimulacion;
+//---------------------------------------------------------------------------
+__fastcall TFormSimulacion::TFormSimulacion(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TFormSimulacion::Button_ExitClick(TObject *Sender)
+{
+	FormSimulacion->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSimulacion::TrackBar_Deposito1Change(TObject *Sender)
+{
+	deposito[0].Capacidad(TrackBar_Deposito1->Position);
+	Label1->Caption=TrackBar_Deposito1->Position;
+	Label2->Caption=deposito[0].Capacidad();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSimulacion::Button1Click(TObject *Sender)
+{
+	if (deposito[0].ToggleValvula()) {
+		FormSimulacion->Label3->Caption="ABIERTA";
+	}else{
+    	FormSimulacion->Label3->Caption="CERRADA";
+    }
+}
+//---------------------------------------------------------------------------
+
+

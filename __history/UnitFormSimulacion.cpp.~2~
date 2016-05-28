@@ -1,0 +1,70 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "UnitFormSimulacion.h"
+#include "UnitDatos.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFormSimulacion *FormSimulacion;
+//---------------------------------------------------------------------------
+__fastcall TFormSimulacion::TFormSimulacion(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TFormSimulacion::Button_ExitClick(TObject *Sender)
+{
+	FormSimulacion->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSimulacion::TrackBarDeposito1Change(TObject *Sender)
+{
+	deposito[0].Cantidad(TrackBarDeposito1->Position);
+	LabelDeposito1->Caption=AnsiString(deposito[0].Cantidad()/10) + " %";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSimulacion::Button1Click(TObject *Sender)
+{
+	if (deposito[0].ToggleValvula()) {
+		FormSimulacion->Label3->Caption="ABIERTA";
+	}else{
+    	FormSimulacion->Label3->Caption="CERRADA";
+    }
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TFormSimulacion::TrackBarDeposito2Change(TObject *Sender)
+{
+	deposito[1].Cantidad(TrackBarDeposito2->Position);
+	LabelDeposito2->Caption=AnsiString(deposito[1].Cantidad()/10) + " %";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSimulacion::TrackBarDeposito3Change(TObject *Sender)
+{
+	deposito[2].Cantidad(TrackBarDeposito3->Position);
+	LabelDeposito3->Caption=AnsiString(deposito[2].Cantidad()/10) + " %";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSimulacion::TrackBarDeposito4Change(TObject *Sender)
+{
+	deposito[3].Cantidad(TrackBarDeposito4->Position);
+	LabelDeposito4->Caption=AnsiString(deposito[3].Cantidad()/10) + " %";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormSimulacion::TrackBarDeposito5Change(TObject *Sender)
+{
+	deposito[4].Cantidad(TrackBarDeposito5->Position);
+	LabelDeposito5->Caption=AnsiString(deposito[4].Cantidad()/10) + " %";
+}
+//---------------------------------------------------------------------------
+

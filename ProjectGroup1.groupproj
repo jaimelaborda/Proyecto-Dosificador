@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{647486CA-CADF-4E09-8E4B-13D7E4538296}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ProjectDosificador.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII2.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII21.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ProjectDosificador">
+        <MSBuild Projects="ProjectDosificador.cbproj"/>
+    </Target>
+    <Target Name="ProjectDosificador:Clean">
+        <MSBuild Projects="ProjectDosificador.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectDosificador:Make">
+        <MSBuild Projects="ProjectDosificador.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="PaqueteSII2">
+        <MSBuild Projects="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII2.cbproj"/>
+    </Target>
+    <Target Name="PaqueteSII2:Clean">
+        <MSBuild Projects="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII2.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PaqueteSII2:Make">
+        <MSBuild Projects="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII2.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="PaqueteSII21">
+        <MSBuild Projects="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII21.cbproj"/>
+    </Target>
+    <Target Name="PaqueteSII21:Clean">
+        <MSBuild Projects="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII21.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PaqueteSII21:Make">
+        <MSBuild Projects="D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\PaqueteSII21.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ProjectDosificador;PaqueteSII2;PaqueteSII21"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ProjectDosificador:Clean;PaqueteSII2:Clean;PaqueteSII21:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ProjectDosificador:Make;PaqueteSII2:Make;PaqueteSII21:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

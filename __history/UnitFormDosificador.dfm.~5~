@@ -1,0 +1,214 @@
+object FormDosificador: TFormDosificador
+  Left = 185
+  Top = 44
+  Caption = 'FormDosificador'
+  ClientHeight = 580
+  ClientWidth = 984
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenuDosificador
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Deposito1: TDeposito
+    Left = 64
+    Top = 70
+    Width = 137
+    Height = 207
+    Cantidad = 1.000000000000000000
+    Color = clRed
+  end
+  object Deposito2: TDeposito
+    Left = 248
+    Top = 70
+    Width = 137
+    Height = 207
+  end
+  object Deposito3: TDeposito
+    Left = 424
+    Top = 70
+    Width = 137
+    Height = 207
+  end
+  object Deposito4: TDeposito
+    Left = 600
+    Top = 70
+    Width = 137
+    Height = 207
+  end
+  object Deposito5: TDeposito
+    Left = 776
+    Top = 70
+    Width = 137
+    Height = 207
+  end
+  object Label1: TLabel
+    Left = 72
+    Top = 39
+    Width = 118
+    Height = 25
+    Caption = 'DEPOSITO 1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 256
+    Top = 39
+    Width = 118
+    Height = 25
+    Caption = 'DEPOSITO 2'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 432
+    Top = 39
+    Width = 118
+    Height = 25
+    Caption = 'DEPOSITO 3'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 608
+    Top = 39
+    Width = 118
+    Height = 25
+    Caption = 'DEPOSITO 4'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 784
+    Top = 39
+    Width = 118
+    Height = 25
+    Caption = 'DEPOSITO 5'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Deposito6: TDeposito
+    Left = 64
+    Top = 328
+    Width = 849
+    Height = 105
+    Cantidad = 1.000000000000000000
+  end
+  object Shape1: TShape
+    Left = 124
+    Top = 277
+    Width = 17
+    Height = 86
+    Brush.Color = clMedGray
+  end
+  object Shape2: TShape
+    Left = 308
+    Top = 277
+    Width = 17
+    Height = 86
+    Brush.Color = clMedGray
+  end
+  object Shape3: TShape
+    Left = 484
+    Top = 277
+    Width = 17
+    Height = 86
+    Brush.Color = clMedGray
+  end
+  object Shape4: TShape
+    Left = 660
+    Top = 277
+    Width = 17
+    Height = 86
+    Brush.Color = clMedGray
+  end
+  object Shape5: TShape
+    Left = 836
+    Top = 277
+    Width = 17
+    Height = 86
+    Brush.Color = clMedGray
+  end
+  object GroupBoxControlPanel: TGroupBox
+    Left = 709
+    Top = 458
+    Width = 236
+    Height = 111
+    Caption = 'Panel de Control'
+    TabOrder = 0
+    object Button_Simulacion: TButton
+      Left = 14
+      Top = 24
+      Width = 91
+      Height = 25
+      Caption = 'Simulaci'#243'n'
+      TabOrder = 0
+      OnClick = Button_SimulacionClick
+    end
+    object ButtonFormulas: TButton
+      Left = 120
+      Top = 24
+      Width = 91
+      Height = 25
+      Caption = 'ButtonFormulas'
+      TabOrder = 1
+      OnClick = ButtonFormulasClick
+    end
+    object ButtonConfigurarDepositos: TButton
+      Left = 16
+      Top = 55
+      Width = 89
+      Height = 25
+      Caption = 'Config Depositos'
+      TabOrder = 2
+      OnClick = ButtonConfigurarDepositosClick
+    end
+  end
+  object Timer1: TTimer
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 24
+    Top = 464
+  end
+  object MainMenuDosificador: TMainMenu
+    object Archivo1: TMenuItem
+      Caption = 'Archivo'
+    end
+    object Vistas1: TMenuItem
+      Caption = 'Vistas'
+      object Simulacin1: TMenuItem
+        Caption = 'Simulaci'#243'n'
+        OnClick = Simulacin1Click
+      end
+      object Formulas1: TMenuItem
+        Caption = 'Formulas'
+        OnClick = Formulas1Click
+      end
+    end
+  end
+end

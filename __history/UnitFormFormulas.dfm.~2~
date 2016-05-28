@@ -1,0 +1,119 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 360
+  ClientWidth = 644
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object LabelMateria1: TLabel
+    Left = 56
+    Top = 136
+    Width = 45
+    Height = 13
+    Caption = 'Materia 1'
+  end
+  object Label1: TLabel
+    Left = 56
+    Top = 184
+    Width = 45
+    Height = 13
+    Caption = 'Materia 2'
+  end
+  object Label2: TLabel
+    Left = 56
+    Top = 232
+    Width = 45
+    Height = 13
+    Caption = 'Materia 3'
+  end
+  object ButtonSave: TButton
+    Left = 32
+    Top = 312
+    Width = 75
+    Height = 25
+    Caption = 'ButtonSave'
+    TabOrder = 0
+  end
+  object ButtonExit: TButton
+    Left = 536
+    Top = 312
+    Width = 75
+    Height = 25
+    Caption = 'ButtonExit'
+    TabOrder = 1
+  end
+  object ComboBoxFormula: TComboBox
+    Left = 240
+    Top = 48
+    Width = 145
+    Height = 21
+    TabOrder = 2
+    Text = 'ComboBoxFormula'
+  end
+  object LabeledEditNombre: TLabeledEdit
+    Left = 56
+    Top = 96
+    Width = 145
+    Height = 21
+    EditLabel.Width = 37
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Nombre'
+    TabOrder = 3
+  end
+  object ComboBoxMateria1: TComboBox
+    Left = 56
+    Top = 152
+    Width = 145
+    Height = 21
+    TabOrder = 4
+    Text = 'ComboBoxMateria1'
+  end
+  object ComboBoxMateria2: TComboBox
+    Left = 56
+    Top = 200
+    Width = 145
+    Height = 21
+    TabOrder = 5
+    Text = 'ComboBox2'
+  end
+  object ComboBoxMateria3: TComboBox
+    Left = 56
+    Top = 248
+    Width = 145
+    Height = 21
+    TabOrder = 6
+    Text = 'ComboBox2'
+  end
+  object GroupBox1: TGroupBox
+    Left = 312
+    Top = 152
+    Width = 219
+    Height = 93
+    Caption = 'Guardar/Recuperar'
+    TabOrder = 7
+    object ButtonRecuperar: TButton
+      Left = 19
+      Top = 40
+      Width = 86
+      Height = 25
+      Caption = 'Leer Archivo'
+      TabOrder = 0
+    end
+    object Button1: TButton
+      Left = 120
+      Top = 40
+      Width = 89
+      Height = 25
+      Caption = 'Guardar Archivo'
+      TabOrder = 1
+    end
+  end
+end

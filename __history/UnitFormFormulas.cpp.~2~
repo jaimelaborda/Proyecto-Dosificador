@@ -1,0 +1,74 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "UnitFormFormulas.h"
+#include "UnitDatos.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFormFormulas *FormFormulas;
+
+int item_index = 0;
+//---------------------------------------------------------------------------
+__fastcall TFormFormulas::TFormFormulas(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TFormFormulas::ComboBoxFormulaChange(TObject *Sender)
+{
+	item_index = ComboBoxFormula->ItemIndex;
+
+	LabeledEditNombre->Text = formula[item_index].Nombre();  //poner aqui el nombre de la formula actual
+	ComboBoxMateria1->ItemIndex = formula[item_index].IdMateria(0);
+	ComboBoxMateria2->ItemIndex = formula[item_index].IdMateria(1);
+	ComboBoxMateria3->ItemIndex = formula[item_index].IdMateria(2);
+
+	TrackBarProporcion1->Position = formula[item_index].Proporcion(0)*100;
+	TrackBarProporcion2->Position = formula[item_index].Proporcion(1)*100;
+	TrackBarProporcion3->Position = formula[item_index].Proporcion(2)*100;
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFormFormulas::TrackBarProporcion1Change(TObject *Sender)
+{
+	LabelProporcion1->Caption = AnsiString(TrackBarProporcion1->Position) + " %";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormFormulas::TrackBarProporcion2Change(TObject *Sender)
+{
+	LabelProporcion2->Caption = AnsiString(TrackBarProporcion2->Position) + " %";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormFormulas::TrackBarProporcion3Change(TObject *Sender)
+{
+	LabelProporcion3->Caption = AnsiString(TrackBarProporcion3->Position) + " %";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormFormulas::ButtonExitClick(TObject *Sender)
+{
+	FormFormulas->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormFormulas::ButtonSaveClick(TObject *Sender)
+{
+	//formula[item_index].Nombre(LabeledEditNombre->Text);
+
+	formula[item_index].IdMateria(0, ComboBoxMateria1->ItemIndex);
+	formula[item_index].IdMateria(1, ComboBoxMateria2->ItemIndex);
+	formula[item_index].IdMateria(2, ComboBoxMateria3->ItemIndex);
+
+	formula[item_index].Proporcion(0, (double)TrackBarProporcion1->Position/100);
+	formula[item_index].Proporcion(1, (double)TrackBarProporcion2->Position/100);
+	formula[item_index].Proporcion(2, (double)TrackBarProporcion3->Position/100);
+}
+//---------------------------------------------------------------------------
+

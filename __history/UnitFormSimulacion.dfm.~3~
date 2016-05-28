@@ -1,0 +1,191 @@
+object FormSimulacion: TFormSimulacion
+  Left = 0
+  Top = 0
+  Caption = 'FormSimulacion'
+  ClientHeight = 339
+  ClientWidth = 646
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object LabelDeposito1: TLabel
+    Left = 288
+    Top = 48
+    Width = 6
+    Height = 13
+    Caption = '0'
+  end
+  object Label2: TLabel
+    Left = 80
+    Top = 96
+    Width = 3
+    Height = 13
+  end
+  object Label3: TLabel
+    Left = 488
+    Top = 48
+    Width = 33
+    Height = 13
+    Caption = 'estado'
+  end
+  object Label5: TLabel
+    Left = 63
+    Top = 246
+    Width = 51
+    Height = 13
+    Caption = 'Deposito 5'
+  end
+  object Label6: TLabel
+    Left = 63
+    Top = 91
+    Width = 51
+    Height = 13
+    Caption = 'Deposito 2'
+  end
+  object Label7: TLabel
+    Left = 63
+    Top = 142
+    Width = 51
+    Height = 13
+    Caption = 'Deposito 3'
+  end
+  object Label8: TLabel
+    Left = 63
+    Top = 195
+    Width = 51
+    Height = 13
+    Caption = 'Deposito 4'
+  end
+  object Label9: TLabel
+    Left = 63
+    Top = 48
+    Width = 51
+    Height = 13
+    Caption = 'Deposito 1'
+  end
+  object LabelDeposito2: TLabel
+    Left = 288
+    Top = 91
+    Width = 6
+    Height = 13
+    Caption = '0'
+  end
+  object LabelDeposito3: TLabel
+    Left = 288
+    Top = 142
+    Width = 6
+    Height = 13
+    Caption = '0'
+  end
+  object LabelDeposito4: TLabel
+    Left = 288
+    Top = 195
+    Width = 6
+    Height = 13
+    Caption = '0'
+  end
+  object LabelDeposito5: TLabel
+    Left = 288
+    Top = 246
+    Width = 6
+    Height = 13
+    Caption = '0'
+  end
+  object Label1: TLabel
+    Left = 330
+    Top = 142
+    Width = 36
+    Height = 13
+    Caption = 'Bascula'
+  end
+  object LabelBascula: TLabel
+    Left = 546
+    Top = 142
+    Width = 25
+    Height = 13
+    Caption = '0'
+  end
+  object TrackBarDeposito1: TTrackBar
+    Left = 120
+    Top = 40
+    Width = 150
+    Height = 45
+    Max = 1000
+    Frequency = 100
+    TabOrder = 0
+    OnChange = TrackBarDeposito1Change
+  end
+  object Button_Exit: TButton
+    Left = 496
+    Top = 296
+    Width = 75
+    Height = 25
+    Caption = 'Salir'
+    TabOrder = 1
+    OnClick = Button_ExitClick
+  end
+  object Button1: TButton
+    Left = 384
+    Top = 43
+    Width = 75
+    Height = 25
+    Caption = 'Abrir/Cerrar'
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object TrackBarDeposito2: TTrackBar
+    Left = 120
+    Top = 91
+    Width = 150
+    Height = 45
+    Max = 1000
+    Frequency = 100
+    TabOrder = 3
+    OnChange = TrackBarDeposito2Change
+  end
+  object TrackBarDeposito3: TTrackBar
+    Left = 120
+    Top = 142
+    Width = 150
+    Height = 45
+    Max = 1000
+    Frequency = 100
+    TabOrder = 4
+    OnChange = TrackBarDeposito3Change
+  end
+  object TrackBarDeposito4: TTrackBar
+    Left = 120
+    Top = 195
+    Width = 150
+    Height = 45
+    Max = 1000
+    Frequency = 100
+    TabOrder = 5
+    OnChange = TrackBarDeposito4Change
+  end
+  object TrackBarDeposito5: TTrackBar
+    Left = 120
+    Top = 246
+    Width = 150
+    Height = 45
+    Max = 1000
+    Frequency = 100
+    TabOrder = 6
+    OnChange = TrackBarDeposito5Change
+  end
+  object TrackBarBascula: TTrackBar
+    Left = 384
+    Top = 142
+    Width = 150
+    Height = 45
+    Max = 10000
+    Frequency = 100
+    TabOrder = 7
+    OnChange = TrackBarBasculaChange
+  end
+end

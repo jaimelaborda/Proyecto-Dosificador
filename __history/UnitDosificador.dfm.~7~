@@ -1,0 +1,45 @@
+object FormDosificador: TFormDosificador
+  Left = 342
+  Top = 165
+  Caption = 'FormDosificador'
+  ClientHeight = 507
+  ClientWidth = 703
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Shape_Deposito1: TShape
+    Left = 112
+    Top = 285
+    Width = 113
+    Height = -56
+  end
+  object Label1: TLabel
+    Left = 152
+    Top = 296
+    Width = 51
+    Height = 13
+    Caption = 'Dep'#243'sito 1'
+  end
+  object Button_Simulacion: TButton
+    Left = 264
+    Top = 242
+    Width = 75
+    Height = 25
+    Caption = 'Simulaci'#243'n'
+    TabOrder = 0
+    OnClick = Button_SimulacionClick
+  end
+  object Timer1: TTimer
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 640
+    Top = 24
+  end
+end

@@ -1,0 +1,35 @@
+//---------------------------------------------------------------------------
+
+#ifndef UnitFormFormulasH
+#define UnitFormFormulasH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// IDE-managed Components
+	TButton *ButtonSave;
+	TButton *ButtonExit;
+	TComboBox *ComboBoxFormula;
+	TLabeledEdit *LabeledEditNombre;
+	TComboBox *ComboBoxMateria1;
+	TLabel *LabelMateria1;
+	TComboBox *ComboBoxMateria2;
+	TLabel *Label1;
+	TComboBox *ComboBoxMateria3;
+	TLabel *Label2;
+	TButton *ButtonRecuperar;
+	TGroupBox *GroupBox1;
+	TButton *Button1;
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif
