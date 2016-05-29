@@ -49,9 +49,10 @@ __published:	// IDE-managed Components
 	TShape *ShapeValvulaBasc;
 	TImage *Image1;
 	TShape *Shape6;
-	TShape *Shape7;
+	TShape *ShapeMezcladora;
 	TImage *Image2;
 	TShape *Shape8;
+	TButton *Button1;
 	void __fastcall Button_SimulacionClick(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall ButtonFormulasClick(TObject *Sender);
@@ -59,6 +60,7 @@ __published:	// IDE-managed Components
 	void __fastcall Formulas1Click(TObject *Sender);
 	void __fastcall ButtonConfigurarDepositosClick(TObject *Sender);
 	void __fastcall FormPaint(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
 
 
 private:	// User declarations

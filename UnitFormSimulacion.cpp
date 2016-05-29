@@ -127,8 +127,8 @@ void __fastcall TFormSimulacion::ButtonDep6Click(TObject *Sender)
 
 void __fastcall TFormSimulacion::TrackBarMezcladoraChange(TObject *Sender)
 {
-	mezcladora.Cantidad(TrackBarBascula->Position);
-	LabelMez->Caption=AnsiString(mezcladora.Peso()/100) + " %";
+	mezcladora.Cantidad(TrackBarMezcladora->Position);
+	LabelMez->Caption=AnsiString(mezcladora.Cantidad()/100) + " %";
 }
 //---------------------------------------------------------------------------
 

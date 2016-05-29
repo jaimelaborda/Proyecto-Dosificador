@@ -2,7 +2,7 @@ object FormDosificador: TFormDosificador
   Left = 185
   Top = 44
   Caption = 'FormDosificador'
-  ClientHeight = 725
+  ClientHeight = 745
   ClientWidth = 1320
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -749,11 +749,11 @@ object FormDosificador: TFormDosificador
     Height = 33
     Brush.Color = clDefault
   end
-  object Shape7: TShape
-    Left = 506
-    Top = 480
-    Width = 247
-    Height = 124
+  object ShapeMezcladora: TShape
+    Left = 509
+    Top = 604
+    Width = 244
+    Height = 8
   end
   object Image2: TImage
     Left = 576
@@ -22628,8 +22628,8 @@ object FormDosificador: TFormDosificador
     Brush.Color = clDefault
   end
   object GroupBoxControlPanel: TGroupBox
-    Left = 1053
-    Top = 493
+    Left = 1037
+    Top = 501
     Width = 236
     Height = 111
     Caption = 'Panel de Control'
@@ -22661,6 +22661,15 @@ object FormDosificador: TFormDosificador
       TabOrder = 2
       OnClick = ButtonConfigurarDepositosClick
     end
+  end
+  object Button1: TButton
+    Left = 336
+    Top = 520
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
   end
   object Timer1: TTimer
     Interval = 100

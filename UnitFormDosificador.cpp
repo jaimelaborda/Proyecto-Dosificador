@@ -144,3 +144,9 @@ void __fastcall TFormDosificador::FormPaint(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TFormDosificador::Button1Click(TObject *Sender)
+{
+ShowMessage(mezcladora.Cantidad());
+}
+//---------------------------------------------------------------------------
+
