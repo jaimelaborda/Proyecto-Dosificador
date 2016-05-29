@@ -1,6 +1,6 @@
 #include <vcl.h>
 //---------------------------------------------------------------------------
- #define MAX_DESCRIPCION 10
+ #define MAX_DESCRIPCION 60
  #define MAX_NOMBRE 10
 
 //---------------------------------------------------------------------------
@@ -43,12 +43,14 @@ public:
 class CMateria
 {
 	int id;
-	char descripcion[MAX_DESCRIPCION];
+	char nombre[MAX_NOMBRE];
 	int id_deposito;
 public:
 	void Id(int _id);
 	int Id(void);
 
+	void Nombre(char *_nombre);
+	char* Nombre(void);
 };
 
 class CMezcladora: public CValvula
@@ -63,7 +65,7 @@ public:
 	double Cantidad(void);
 };
 
-class CFormula    //Modificado para que compile
+class CFormula
 {
 	int id_formula;
 	int id_materia[3];
@@ -74,6 +76,9 @@ class CFormula    //Modificado para que compile
 public:
 	void Nombre(char *_nombre);
 	char* Nombre(void);
+
+	void Descripcion(char *_descripcion);
+	char* Descripcion(void);
 
 	void IdFormula(int _id_formula);
 	int IdFormula(void);
@@ -87,8 +92,11 @@ public:
 void GuardarArchivo(void);
 void LeerArchivo(void);
 
+void GuardarArchivoMaterias(void);
+void LeerArchivoMaterias(void);
+
 extern CDeposito deposito[5];
-extern CMateria materia[5];
+extern CMateria materia[10];
 extern CFormula formula[5];
 extern CBascula bascula;
 extern CMezcladora mezcladora;

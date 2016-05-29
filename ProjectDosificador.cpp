@@ -6,10 +6,12 @@
 //---------------------------------------------------------------------------
 #include <Vcl.Styles.hpp>
 #include <Vcl.Themes.hpp>
-USEFORM("UnitFormSimulacion.cpp", FormSimulacion);
+USEFORM("UnitFormNuevoPedido.cpp", FormNuevoPedido);
 USEFORM("UnitFormFormulas.cpp", FormFormulas);
+USEFORM("UnitFormSimulacion.cpp", FormSimulacion);
 USEFORM("UnitFormDosificador.cpp", FormDosificador);
 USEFORM("UnitFormConfigDepositos.cpp", FormConfigDepositos);
+USEFORM("UnitFormEditMaterias.cpp", FormEditMaterias);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -21,6 +23,8 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TFormSimulacion), &FormSimulacion);
 		Application->CreateForm(__classid(TFormFormulas), &FormFormulas);
 		Application->CreateForm(__classid(TFormConfigDepositos), &FormConfigDepositos);
+		Application->CreateForm(__classid(TFormNuevoPedido), &FormNuevoPedido);
+		Application->CreateForm(__classid(TFormEditMaterias), &FormEditMaterias);
 		Application->Run();
 	}
 	catch (Exception &exception)

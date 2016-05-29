@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "UnitFormConfigDepositos.h"
+#include "UnitFormEditMaterias.h"
 #include "UnitDatos.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -35,6 +36,29 @@ void __fastcall TFormConfigDepositos::ButtonGuardarClick(TObject *Sender)
 void __fastcall TFormConfigDepositos::ButtonExitClick(TObject *Sender)
 {
 	Close();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFormConfigDepositos::ButtonNuevaMateriaClick(TObject *Sender)
+{
+	FormEditMaterias->ShowModal();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormConfigDepositos::FormPaint(TObject *Sender)
+{
+	ComboBoxMateria->Clear();
+
+	for(int i=0; i<10; i++){
+		ComboBoxMateria->Items->Add(materia[i].Nombre());
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormConfigDepositos::FormShow(TObject *Sender)
+{
+	LeerArchivoMaterias();
 }
 //---------------------------------------------------------------------------
 

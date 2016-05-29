@@ -22629,9 +22629,9 @@ object FormDosificador: TFormDosificador
   end
   object GroupBoxControlPanel: TGroupBox
     Left = 1037
-    Top = 501
+    Top = 447
     Width = 236
-    Height = 111
+    Height = 100
     Caption = 'Panel de Control'
     TabOrder = 0
     object Button_Simulacion: TButton
@@ -22670,6 +22670,23 @@ object FormDosificador: TFormDosificador
     Caption = 'Button1'
     TabOrder = 1
     OnClick = Button1Click
+  end
+  object GroupBox1: TGroupBox
+    Left = 1037
+    Top = 570
+    Width = 236
+    Height = 100
+    Caption = 'Panel de Control'
+    TabOrder = 2
+    object ButtonRealizarPedido: TButton
+      Left = 14
+      Top = 24
+      Width = 91
+      Height = 25
+      Caption = 'Realizar Pedido'
+      TabOrder = 0
+      OnClick = ButtonRealizarPedidoClick
+    end
   end
   object Timer1: TTimer
     Interval = 100

@@ -1,8 +1,8 @@
 object FormFormulas: TFormFormulas
   Left = 0
   Top = 0
-  Caption = 'FormFormulas'
-  ClientHeight = 387
+  Caption = 'Configuracion Formulas'
+  ClientHeight = 391
   ClientWidth = 629
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,8 @@ object FormFormulas: TFormFormulas
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object LabelMateria1: TLabel
@@ -64,10 +66,10 @@ object FormFormulas: TFormFormulas
   end
   object ButtonExit: TButton
     Left = 512
-    Top = 337
+    Top = 345
     Width = 75
     Height = 25
-    Caption = 'ButtonExit'
+    Caption = 'Salir'
     TabOrder = 0
     OnClick = ButtonExitClick
   end
@@ -133,14 +135,14 @@ object FormFormulas: TFormFormulas
       '3. Cebada')
   end
   object GroupBox1: TGroupBox
-    Left = 56
+    Left = 40
     Top = 277
     Width = 219
     Height = 93
     Caption = 'Herramientas'
     TabOrder = 6
     object ButtonRecuperar: TButton
-      Left = 11
+      Left = 15
       Top = 16
       Width = 86
       Height = 25
@@ -149,7 +151,7 @@ object FormFormulas: TFormFormulas
       OnClick = ButtonRecuperarClick
     end
     object Button1: TButton
-      Left = 112
+      Left = 119
       Top = 16
       Width = 89
       Height = 25
@@ -158,11 +160,11 @@ object FormFormulas: TFormFormulas
       OnClick = Button1Click
     end
     object ButtonSave: TButton
-      Left = 11
-      Top = 60
+      Left = 15
+      Top = 57
       Width = 86
       Height = 25
-      Caption = 'ButtonSave'
+      Caption = 'Guardar'
       TabOrder = 2
       OnClick = ButtonSaveClick
     end
@@ -202,15 +204,9 @@ object FormFormulas: TFormFormulas
     Top = 87
     Width = 291
     Height = 21
+    DoubleBuffered = True
+    MaxLength = 60
+    ParentDoubleBuffered = False
     TabOrder = 10
-    Text = 
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ' +
-      'et tortor quis lectus scelerisque porttitor id eget nibh. Donec ' +
-      'varius est id neque vestibulum dictum. Duis orci sapien, pretium' +
-      ' vitae facilisis feugiat, sollicitudin eget risus. Cum sociis na' +
-      'toque penatibus et magnis dis parturient montes, nascetur ridicu' +
-      'lus mus. Quisque vel quam nibh. Donec nec sem eu neque pulvinar ' +
-      'pellentesque ac convallis turpis. Cras faucibus ipsum sed egesta' +
-      's porttitor. Donec aliquam quam at vehicula molestie.'
   end
 end

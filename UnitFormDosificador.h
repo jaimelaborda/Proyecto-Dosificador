@@ -53,6 +53,8 @@ __published:	// IDE-managed Components
 	TImage *Image2;
 	TShape *Shape8;
 	TButton *Button1;
+	TGroupBox *GroupBox1;
+	TButton *ButtonRealizarPedido;
 	void __fastcall Button_SimulacionClick(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall ButtonFormulasClick(TObject *Sender);
@@ -61,6 +63,7 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonConfigurarDepositosClick(TObject *Sender);
 	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall ButtonRealizarPedidoClick(TObject *Sender);
 
 
 private:	// User declarations

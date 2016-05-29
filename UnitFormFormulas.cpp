@@ -22,7 +22,9 @@ void __fastcall TFormFormulas::ComboBoxFormulaChange(TObject *Sender)
 {
 	item_index = ComboBoxFormula->ItemIndex;
 
-	LabeledEditNombre->Text = AnsiString(formula[item_index].Nombre());  //poner aqui el nombre de la formula actual
+	LabeledEditNombre->Text = AnsiString(formula[item_index].Nombre());
+	EditDescripcion->Text = AnsiString(formula[item_index].Descripcion());
+
 	ComboBoxMateria1->ItemIndex = formula[item_index].IdMateria(0);
 	ComboBoxMateria2->ItemIndex = formula[item_index].IdMateria(1);
 	ComboBoxMateria3->ItemIndex = formula[item_index].IdMateria(2);
@@ -61,11 +63,13 @@ void __fastcall TFormFormulas::ButtonExitClick(TObject *Sender)
 
 void __fastcall TFormFormulas::ButtonSaveClick(TObject *Sender)
 {
-	char nombre[10];
+	char nombre[10], descripcion[60];
 
 	wcstombs(nombre, LabeledEditNombre->Text.w_str(), 10);  //Convierte *w_char del Edit en *char
 	formula[item_index].Nombre(nombre);
 
+	wcstombs(descripcion, EditDescripcion->Text.w_str(), 60);  //Convierte *w_char del Edit en *char
+	formula[item_index].Descripcion(descripcion);
 
 	formula[item_index].IdMateria(0, ComboBoxMateria1->ItemIndex);
 	formula[item_index].IdMateria(1, ComboBoxMateria2->ItemIndex);
@@ -86,6 +90,16 @@ void __fastcall TFormFormulas::Button1Click(TObject *Sender)
 void __fastcall TFormFormulas::ButtonRecuperarClick(TObject *Sender)
 {
 	LeerArchivo();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormFormulas::FormShow(TObject *Sender)
+{
+    ComboBoxFormula->Clear();
+	for(int i=0; i<5; i++)
+	{
+		ComboBoxFormula->Items->Add(formula[i].Nombre());
+	}
 }
 //---------------------------------------------------------------------------
 

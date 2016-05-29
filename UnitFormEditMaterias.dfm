@@ -1,0 +1,77 @@
+object FormEditMaterias: TFormEditMaterias
+  Left = 0
+  Top = 0
+  Caption = 'FormEditMaterias'
+  ClientHeight = 219
+  ClientWidth = 406
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 120
+    Top = 8
+    Width = 178
+    Height = 25
+    Caption = 'EDITAR MATERIAS'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object ComboBoxMateria: TComboBox
+    Left = 136
+    Top = 39
+    Width = 145
+    Height = 21
+    TabOrder = 0
+    OnChange = ComboBoxMateriaChange
+  end
+  object LabeledEditId: TLabeledEdit
+    Left = 32
+    Top = 72
+    Width = 41
+    Height = 21
+    EditLabel.Width = 11
+    EditLabel.Height = 13
+    EditLabel.Caption = 'ID'
+    TabOrder = 1
+  end
+  object LabeledEditMateria: TLabeledEdit
+    Left = 32
+    Top = 120
+    Width = 121
+    Height = 21
+    EditLabel.Width = 76
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Nombre Materia'
+    TabOrder = 2
+  end
+  object Button1: TButton
+    Left = 296
+    Top = 176
+    Width = 75
+    Height = 25
+    Caption = 'Aceptar'
+    TabOrder = 3
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 200
+    Top = 176
+    Width = 75
+    Height = 25
+    Caption = 'Cancelar'
+    TabOrder = 4
+    OnClick = Button2Click
+  end
+end

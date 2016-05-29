@@ -49,7 +49,7 @@
         <ILINK_LibraryPath>D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <IncludePath>D:\Users\jaime\Documents\Embarcadero\Packages\PaqueteSII 2\;$(IncludePath)</IncludePath>
         <ProjectType>CppVCLApplication</ProjectType>
-        <AllPackageLibs>rtl.lib;vcl.lib;paquete.lib;PaqueteSII.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;paquete.lib;PaqueteSII.lib;vclimg.lib</AllPackageLibs>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
@@ -106,7 +106,7 @@
         <LinkPackageStatics>paquete.lib;PaqueteSII.lib</LinkPackageStatics>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
-        <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;vclimg.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -140,11 +140,23 @@
             <DependentOn>UnitFormDosificador.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="UnitFormEditMaterias.cpp">
+            <Form>FormEditMaterias</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>UnitFormEditMaterias.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
         <CppCompile Include="UnitFormFormulas.cpp">
             <Form>FormFormulas</Form>
             <FormType>dfm</FormType>
             <DependentOn>UnitFormFormulas.h</DependentOn>
             <BuildOrder>7</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="UnitFormNuevoPedido.cpp">
+            <Form>FormNuevoPedido</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>UnitFormNuevoPedido.h</DependentOn>
+            <BuildOrder>9</BuildOrder>
         </CppCompile>
         <CppCompile Include="UnitFormSimulacion.cpp">
             <Form>FormSimulacion</Form>
@@ -160,10 +172,12 @@
             <DependentOn>UnitTareas.h</DependentOn>
             <BuildOrder>4</BuildOrder>
         </CppCompile>
-        <FormResources Include="UnitFormSimulacion.dfm"/>
+        <FormResources Include="UnitFormNuevoPedido.dfm"/>
         <FormResources Include="UnitFormFormulas.dfm"/>
+        <FormResources Include="UnitFormSimulacion.dfm"/>
         <FormResources Include="UnitFormDosificador.dfm"/>
         <FormResources Include="UnitFormConfigDepositos.dfm"/>
+        <FormResources Include="UnitFormEditMaterias.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

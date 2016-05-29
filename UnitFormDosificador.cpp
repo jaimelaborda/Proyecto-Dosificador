@@ -7,6 +7,7 @@
 #include "UnitFormFormulas.h"
 #include "UnitFormSimulacion.h"
 #include "UnitFormConfigDepositos.h"
+#include "UnitFormNuevoPedido.h"
 #include "UnitDatos.h"
 #include "UnitTareas.h"
 //---------------------------------------------------------------------------
@@ -146,7 +147,13 @@ void __fastcall TFormDosificador::FormPaint(TObject *Sender)
 
 void __fastcall TFormDosificador::Button1Click(TObject *Sender)
 {
-ShowMessage(mezcladora.Cantidad());
+	ShowMessage(formula[0].Nombre());
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormDosificador::ButtonRealizarPedidoClick(TObject *Sender)
+{
+	FormNuevoPedido->ShowModal();
 }
 //---------------------------------------------------------------------------
 

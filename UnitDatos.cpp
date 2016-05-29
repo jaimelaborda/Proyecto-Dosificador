@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 //VALVULA-----------------------------------------------------------------------
 
 void CValvula::Abrir (void) {estado_valvula = true;}
@@ -63,11 +64,19 @@ double CFormula::Proporcion(int pos)
 }
 void CFormula::Nombre(char *_nombre)
 {
-	strcpy(_nombre, nombre);
+	strcpy(nombre, _nombre);
 }
 char* CFormula::Nombre(void)
 {
 	return nombre;
+}
+void CFormula::Descripcion(char *_descripcion)
+{
+	strcpy(descripcion, _descripcion);
+}
+char* CFormula::Descripcion(void)
+{
+	return descripcion;
 }
 void GuardarArchivo(void)
 {
@@ -106,10 +115,42 @@ bool CMezcladora::MotorState(void) {return motor_state;}
 void CMezcladora::Cantidad(double _cantidad) {cantidad = _cantidad;}
 double CMezcladora::Cantidad(void) {return cantidad;}
 
+//MATERIA-----------------------------------------------------------------------
+void CMateria::Nombre(char *_nombre){strcpy(nombre, _nombre);}
+char* CMateria::Nombre(void){return nombre;}
+
+void CMateria::Id(int _id){id = _id;}
+int CMateria::Id(void){return id;}
+
+void GuardarArchivoMaterias(void)
+{
+	FILE* F;
+
+	F = fopen("file_materias.bin", "wb");
+
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	fwrite(materia, sizeof(CMateria), 10, F);
+
+	fclose(F);
+}
+void LeerArchivoMaterias(void)
+{
+	FILE* F;
+
+	F = fopen("file_materias.bin", "rb");
+
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	fread(materia, sizeof(CMateria), 10, F);
+
+	fclose(F);
+}
+
 
 //DECLARACIÓN VARIABLES ---------------------------------------------------------------
 CDeposito deposito[5];
-CMateria materia[5];
+CMateria materia[10];
 CFormula formula[5];
 CBascula bascula;
 CMezcladora mezcladora;

@@ -1,0 +1,21 @@
+//---------------------------------------------------------------------------
+
+#ifndef UnitFormNuevoPedidoH
+#define UnitFormNuevoPedidoH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+//---------------------------------------------------------------------------
+class TFormNuevoPedido : public TForm
+{
+__published:	// IDE-managed Components
+private:	// User declarations
+public:		// User declarations
+	__fastcall TFormNuevoPedido(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TFormNuevoPedido *FormNuevoPedido;
+//---------------------------------------------------------------------------
+#endif

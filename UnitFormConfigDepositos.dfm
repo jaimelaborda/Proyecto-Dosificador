@@ -11,6 +11,9 @@ object FormConfigDepositos: TFormConfigDepositos
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
+  OnPaint = FormPaint
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -41,7 +44,7 @@ object FormConfigDepositos: TFormConfigDepositos
     Caption = 'Materia'
   end
   object Label3: TLabel
-    Left = 240
+    Left = 292
     Top = 133
     Width = 70
     Height = 13
@@ -53,7 +56,6 @@ object FormConfigDepositos: TFormConfigDepositos
     Width = 145
     Height = 21
     TabOrder = 0
-    Text = 'ComboBoxDep'
     OnChange = ComboBoxDepChange
     Items.Strings = (
       'Deposito 1'
@@ -62,13 +64,12 @@ object FormConfigDepositos: TFormConfigDepositos
       'Deposito 4'
       'Deposito 5')
   end
-  object ComboBox2: TComboBox
+  object ComboBoxMateria: TComboBox
     Left = 56
     Top = 152
     Width = 145
     Height = 21
     TabOrder = 1
-    Text = 'ComboBox2'
   end
   object LabeledEdit1: TLabeledEdit
     Left = 56
@@ -79,6 +80,7 @@ object FormConfigDepositos: TFormConfigDepositos
     EditLabel.Height = 13
     EditLabel.Caption = 'Capacidad M'#225'xima'
     TabOrder = 2
+    Text = '1000'
   end
   object ButtonGuardar: TButton
     Left = 56
@@ -99,10 +101,19 @@ object FormConfigDepositos: TFormConfigDepositos
     OnClick = ButtonExitClick
   end
   object ColorBox: TColorBox
-    Left = 240
+    Left = 292
     Top = 152
     Width = 145
     Height = 22
     TabOrder = 5
+  end
+  object ButtonNuevaMateria: TButton
+    Left = 207
+    Top = 150
+    Width = 26
+    Height = 25
+    Caption = '+'
+    TabOrder = 6
+    OnClick = ButtonNuevaMateriaClick
   end
 end
