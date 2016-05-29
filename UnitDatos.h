@@ -100,6 +100,9 @@ void LeerArchivoFormulas(void);
 void GuardarArchivoMaterias(void);
 void LeerArchivoMaterias(void);
 
+//PEDIDOS
+void NuevoPedido(int _id_formula, double _cantidad, int _prioridad);
+
 extern CDeposito deposito[5];
 extern CMateria materia[10];
 extern CFormula formula[5];

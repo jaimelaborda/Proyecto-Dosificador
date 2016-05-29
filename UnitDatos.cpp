@@ -159,6 +159,31 @@ void LeerArchivoMaterias(void)
 	fclose(F);
 }
 
+//PEDIDOS
+void NuevoPedido(int _id_formula, double _cantidad, int _prioridad)
+{
+	FILE* F;
+	int id_pedido, id_pedido_ultimo=0, id_formula, cantidad, prioridad;
+
+	F = fopen("file_pedidosNuevos.txt", "r");   //Abro para leer
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	while (!feof(F))
+	{
+		fscanf(F, "%d %d %f %d", &id_pedido, &id_formula, &cantidad, &prioridad);
+		//ShowMessage(id_pedido);
+
+		if(id_pedido > id_pedido_ultimo) id_pedido_ultimo = id_pedido;
+	}
+	fclose(F);
+
+	F = fopen("file_pedidosNuevos.txt", "a");   //Abro con cursor al final para escribir
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	fprintf(F, "%d %d %.2f %d\n", id_pedido_ultimo+1, _id_formula, _cantidad, _prioridad);
+
+	fclose(F);
+}
 
 //DECLARACIÓN VARIABLES ---------------------------------------------------------------
 CDeposito deposito[5];

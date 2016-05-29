@@ -12,6 +12,7 @@ object FormNuevoPedido: TFormNuevoPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -48,21 +49,21 @@ object FormNuevoPedido: TFormNuevoPedido
     Height = 13
     Caption = 'Prioridad: '
   end
-  object ComboBox1: TComboBox
+  object ComboBoxFormula: TComboBox
     Left = 131
     Top = 91
     Width = 145
     Height = 21
     TabOrder = 0
-    Text = 'ComboBox1'
+    OnChange = ComboBoxFormulaChange
   end
-  object Edit1: TEdit
+  object EditCantidad: TEdit
     Left = 131
     Top = 149
     Width = 76
     Height = 21
+    NumbersOnly = True
     TabOrder = 1
-    Text = 'Edit1'
   end
   object Button1: TButton
     Left = 272
@@ -71,6 +72,7 @@ object FormNuevoPedido: TFormNuevoPedido
     Height = 25
     Caption = 'Realizar Pedido'
     TabOrder = 2
+    OnClick = Button1Click
   end
   object Button2: TButton
     Left = 160
@@ -79,13 +81,17 @@ object FormNuevoPedido: TFormNuevoPedido
     Height = 25
     Caption = 'Cancelar'
     TabOrder = 3
+    OnClick = Button2Click
   end
-  object ComboBox2: TComboBox
+  object ComboBoxPrioridad: TComboBox
     Left = 131
     Top = 197
     Width = 94
     Height = 21
     TabOrder = 4
-    Text = 'ComboBox1'
+    Items.Strings = (
+      'ALTA'
+      'MEDIA'
+      'BAJA')
   end
 end

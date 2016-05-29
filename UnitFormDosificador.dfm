@@ -22676,7 +22676,7 @@ object FormDosificador: TFormDosificador
     Top = 570
     Width = 236
     Height = 100
-    Caption = 'Panel de Control'
+    Caption = 'Panel de Pedidos'
     TabOrder = 2
     object ButtonRealizarPedido: TButton
       Left = 14
@@ -22691,8 +22691,8 @@ object FormDosificador: TFormDosificador
   object Timer1: TTimer
     Interval = 100
     OnTimer = Timer1Timer
-    Left = 168
-    Top = 424
+    Left = 1160
+    Top = 176
   end
   object MainMenuDosificador: TMainMenu
     object Archivo1: TMenuItem
