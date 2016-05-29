@@ -12,7 +12,6 @@ object FormConfigDepositos: TFormConfigDepositos
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
-  OnPaint = FormPaint
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -50,6 +49,14 @@ object FormConfigDepositos: TFormConfigDepositos
     Height = 13
     Caption = 'Color Deposito'
   end
+  object Deposito1: TDeposito
+    Left = 512
+    Top = 91
+    Width = 100
+    Height = 168
+    Cantidad = 0.700000000000000000
+    Color = clOlive
+  end
   object ComboBoxDep: TComboBox
     Left = 276
     Top = 88
@@ -70,6 +77,7 @@ object FormConfigDepositos: TFormConfigDepositos
     Width = 145
     Height = 21
     TabOrder = 1
+    OnChange = ComboBoxMateriaChange
   end
   object LabeledEdit1: TLabeledEdit
     Left = 56
@@ -83,20 +91,20 @@ object FormConfigDepositos: TFormConfigDepositos
     Text = '1000'
   end
   object ButtonGuardar: TButton
-    Left = 56
+    Left = 48
     Top = 328
     Width = 75
     Height = 25
-    Caption = 'ButtonGuardar'
+    Caption = 'Guardar'
     TabOrder = 3
     OnClick = ButtonGuardarClick
   end
   object ButtonExit: TButton
-    Left = 560
+    Left = 568
     Top = 328
     Width = 75
     Height = 25
-    Caption = 'ButtonExit'
+    Caption = 'Salir'
     TabOrder = 4
     OnClick = ButtonExitClick
   end
@@ -106,6 +114,7 @@ object FormConfigDepositos: TFormConfigDepositos
     Width = 145
     Height = 22
     TabOrder = 5
+    OnChange = ColorBoxChange
   end
   object ButtonNuevaMateria: TButton
     Left = 207

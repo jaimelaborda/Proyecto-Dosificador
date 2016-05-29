@@ -83,19 +83,20 @@ void __fastcall TFormFormulas::ButtonSaveClick(TObject *Sender)
 
 void __fastcall TFormFormulas::Button1Click(TObject *Sender)
 {
-	GuardarArchivo();
+	GuardarArchivoFormulas();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TFormFormulas::ButtonRecuperarClick(TObject *Sender)
 {
-	LeerArchivo();
+	LeerArchivoFormulas();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TFormFormulas::FormShow(TObject *Sender)
 {
-    ComboBoxFormula->Clear();
+	LeerArchivoFormulas();
+	ComboBoxFormula->Clear();
 	for(int i=0; i<5; i++)
 	{
 		ComboBoxFormula->Items->Add(formula[i].Nombre());

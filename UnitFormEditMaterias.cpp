@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "UnitFormEditMaterias.h"
+#include "UnitFormConfigDepositos.h"
 #include "UnitDatos.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -39,6 +40,13 @@ void __fastcall TFormEditMaterias::Button1Click(TObject *Sender)
 	materia[item_index].Id(LabeledEditId->Text.ToInt());
 
 	GuardarArchivoMaterias();
+
+	FormConfigDepositos->ComboBoxMateria->Clear();
+
+	for(int i=0; i<10; i++){
+		FormConfigDepositos->ComboBoxMateria->Items->Add(materia[i].Nombre());
+	}
+
 	Close();
 }
 //---------------------------------------------------------------------------

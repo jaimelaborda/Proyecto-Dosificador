@@ -78,7 +78,7 @@ char* CFormula::Descripcion(void)
 {
 	return descripcion;
 }
-void GuardarArchivo(void)
+void GuardarArchivoFormulas(void)
 {
 	FILE* F;
 
@@ -90,7 +90,7 @@ void GuardarArchivo(void)
 
 	fclose(F);
 }
-void LeerArchivo(void)
+void LeerArchivoFormulas(void)
 {
 	FILE* F;
 
@@ -121,6 +121,18 @@ char* CMateria::Nombre(void){return nombre;}
 
 void CMateria::Id(int _id){id = _id;}
 int CMateria::Id(void){return id;}
+
+void CMateria::IdDeposito(int _id_deposito){id_deposito = _id_deposito;}
+int CMateria::IdDeposito(void){return id_deposito;}
+
+int IdMateria(int id_deposito)
+{
+	 for (int i = 0; i < 10; i++) {
+		 if (materia[i].IdDeposito() == id_deposito)
+			return i;
+	 }
+	 return 0;
+}
 
 void GuardarArchivoMaterias(void)
 {

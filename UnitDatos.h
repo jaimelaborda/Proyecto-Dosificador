@@ -49,9 +49,14 @@ public:
 	void Id(int _id);
 	int Id(void);
 
+	void IdDeposito(int _id_deposito);
+	int IdDeposito(void);
+
 	void Nombre(char *_nombre);
 	char* Nombre(void);
 };
+
+	int IdMateria(int id_deposito); //Devuelve el id_materia asociado con el id_deposito dado
 
 class CMezcladora: public CValvula
 {
@@ -89,8 +94,8 @@ public:
 	double Proporcion(int pos);
 };
 
-void GuardarArchivo(void);
-void LeerArchivo(void);
+void GuardarArchivoFormulas(void);
+void LeerArchivoFormulas(void);
 
 void GuardarArchivoMaterias(void);
 void LeerArchivoMaterias(void);

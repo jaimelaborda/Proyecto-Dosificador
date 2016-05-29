@@ -8,6 +8,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
+#include "TDeposito.h"
 //---------------------------------------------------------------------------
 class TFormConfigDepositos : public TForm
 {
@@ -23,12 +24,14 @@ __published:	// IDE-managed Components
 	TColorBox *ColorBox;
 	TLabel *Label3;
 	TButton *ButtonNuevaMateria;
+	TDeposito *Deposito1;
 	void __fastcall ComboBoxDepChange(TObject *Sender);
 	void __fastcall ButtonGuardarClick(TObject *Sender);
 	void __fastcall ButtonExitClick(TObject *Sender);
 	void __fastcall ButtonNuevaMateriaClick(TObject *Sender);
-	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
+	void __fastcall ColorBoxChange(TObject *Sender);
+	void __fastcall ComboBoxMateriaChange(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TFormConfigDepositos(TComponent* Owner);
