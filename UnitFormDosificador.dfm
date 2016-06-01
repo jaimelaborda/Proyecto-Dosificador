@@ -2,7 +2,7 @@ object FormDosificador: TFormDosificador
   Left = 185
   Top = 44
   Caption = 'FormDosificador'
-  ClientHeight = 745
+  ClientHeight = 725
   ClientWidth = 1320
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22627,6 +22627,14 @@ object FormDosificador: TFormDosificador
     Height = 33
     Brush.Color = clDefault
   end
+  object Shape7: TShape
+    Left = 615
+    Top = 520
+    Width = 30
+    Height = 49
+    Brush.Color = clRed
+    Shape = stCircle
+  end
   object GroupBoxControlPanel: TGroupBox
     Left = 1037
     Top = 447
@@ -22675,22 +22683,55 @@ object FormDosificador: TFormDosificador
     Left = 1037
     Top = 570
     Width = 236
-    Height = 100
+    Height = 107
     Caption = 'Panel de Pedidos'
     TabOrder = 2
+    object ShapeProceso: TShape
+      Left = 180
+      Top = 54
+      Width = 41
+      Height = 50
+      Brush.Color = clRed
+      Shape = stCircle
+    end
     object ButtonRealizarPedido: TButton
-      Left = 14
+      Left = 46
       Top = 24
-      Width = 91
+      Width = 100
       Height = 25
       Caption = 'Realizar Pedido'
       TabOrder = 0
       OnClick = ButtonRealizarPedidoClick
     end
+    object ButtonInitProcess: TButton
+      Left = 16
+      Top = 55
+      Width = 153
+      Height = 42
+      Caption = 'INICIAR PROCESO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      OnClick = ButtonInitProcessClick
+    end
   end
-  object Timer1: TTimer
+  object ProgressBarBascula: TProgressBar
+    Left = 1063
+    Top = 312
+    Width = 34
+    Height = 111
+    Max = 10000
+    Orientation = pbVertical
+    Position = 50
+    TabOrder = 3
+  end
+  object TimerGUI: TTimer
     Interval = 100
-    OnTimer = Timer1Timer
+    OnTimer = TimerGUITimer
     Left = 1160
     Top = 176
   end
@@ -22709,5 +22750,11 @@ object FormDosificador: TFormDosificador
         OnClick = Formulas1Click
       end
     end
+  end
+  object TimerProceso: TTimer
+    Interval = 10000
+    OnTimer = TimerProcesoTimer
+    Left = 1160
+    Top = 232
   end
 end

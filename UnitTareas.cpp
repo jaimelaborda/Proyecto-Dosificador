@@ -21,12 +21,13 @@ void ActualizarGUI (void)
 	FormDosificador->Deposito3->Cantidad = (float)deposito[2].Cantidad()/1000;
 	FormDosificador->Deposito4->Cantidad = (float)deposito[3].Cantidad()/1000;
 	FormDosificador->Deposito5->Cantidad = (float)deposito[4].Cantidad()/1000;
-	//FormDosificador->Bascula->Cantidad = (float)bascula.Peso()/10000;
+	FormDosificador->ProgressBarBascula->Position = (int)bascula.Peso();
 	FormDosificador->ShapeMezcladora->Height = - mezcladora.Cantidad()*124/10000;
 
 	//ShowMessage(FormDosificador->Deposito1->Color);
 	FormDosificador->Deposito1->Color = deposito[0].Color();
 	FormDosificador->Deposito1->Paint();
+
 
 }
 

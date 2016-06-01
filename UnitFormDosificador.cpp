@@ -10,6 +10,7 @@
 #include "UnitFormNuevoPedido.h"
 #include "UnitDatos.h"
 #include "UnitTareas.h"
+#include "UnitProcesos.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TDeposito"
@@ -27,7 +28,7 @@ void __fastcall TFormDosificador::Button_SimulacionClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormDosificador::Timer1Timer(TObject *Sender)
+void __fastcall TFormDosificador::TimerGUITimer(TObject *Sender)
 {
 	ActualizarGUI();
 }
@@ -138,7 +139,7 @@ void __fastcall TFormDosificador::FormPaint(TObject *Sender)
 
 	TPoint PtBascula[] =  {Point(0, 0), Point(0, 0.5*PaintBoxBasc->Height), Point(0.48*PaintBoxBasc->Width, PaintBoxBasc->Height), Point(0.52*PaintBoxBasc->Width, PaintBoxBasc->Height), Point(PaintBoxBasc->Width, 0.5*PaintBoxBasc->Height), Point(PaintBoxBasc->Width, 0), Point(0, 0)};
 
-	PaintBoxBasc->Canvas->Brush->Color=clRed;
+	PaintBoxBasc->Canvas->Brush->Color=clWhite;
 	PaintBoxBasc->Canvas->Polygon(PtBascula, 6);
 
 	Shape4->Brush->Color = deposito[0].Color();
@@ -147,7 +148,9 @@ void __fastcall TFormDosificador::FormPaint(TObject *Sender)
 
 void __fastcall TFormDosificador::Button1Click(TObject *Sender)
 {
-	ShowMessage(formula[0].Nombre());
+	UnicodeString errorText="prueba kaka";
+	//Application->MessageBox(kaka, MB_YESNO);
+	MessageDlg(errorText,mtConfirmation,mbYesNo,0);
 }
 //---------------------------------------------------------------------------
 
@@ -156,4 +159,31 @@ void __fastcall TFormDosificador::ButtonRealizarPedidoClick(TObject *Sender)
 	FormNuevoPedido->ShowModal();
 }
 //---------------------------------------------------------------------------
+
+
+void __fastcall TFormDosificador::ButtonInitProcessClick(TObject *Sender)
+{
+	if (InfoProceso()) {
+		PararProceso();
+		TimerProceso->Enabled = false;
+		ShapeProceso->Brush->Color = clRed;
+		ButtonInitProcess->Caption = "INICIAR PROCESO";
+	}else{
+		if(MessageDlg("¿Desea iniciar el Proceso?",mtConfirmation,mbYesNo,0)==mrYes)
+			IniciarProceso();
+
+		TimerProceso->Enabled = true;
+		ShapeProceso->Brush->Color = clGreen;
+		ButtonInitProcess->Caption = "PARAR PROCESO";
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormDosificador::TimerProcesoTimer(TObject *Sender)
+{
+	Proceso();
+}
+//---------------------------------------------------------------------------
+
+
 

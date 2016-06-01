@@ -11,12 +11,13 @@
 #include "TDeposito.h"
 #include <Vcl.Menus.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
+#include <Vcl.ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TFormDosificador : public TForm
 {
 __published:	// IDE-managed Components
 	TButton *Button_Simulacion;
-	TTimer *Timer1;
+	TTimer *TimerGUI;
 	TDeposito *Deposito1;
 	TDeposito *Deposito2;
 	TDeposito *Deposito3;
@@ -55,8 +56,13 @@ __published:	// IDE-managed Components
 	TButton *Button1;
 	TGroupBox *GroupBox1;
 	TButton *ButtonRealizarPedido;
+	TProgressBar *ProgressBarBascula;
+	TShape *Shape7;
+	TButton *ButtonInitProcess;
+	TTimer *TimerProceso;
+	TShape *ShapeProceso;
 	void __fastcall Button_SimulacionClick(TObject *Sender);
-	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall TimerGUITimer(TObject *Sender);
 	void __fastcall ButtonFormulasClick(TObject *Sender);
 	void __fastcall Simulacin1Click(TObject *Sender);
 	void __fastcall Formulas1Click(TObject *Sender);
@@ -64,6 +70,9 @@ __published:	// IDE-managed Components
 	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall ButtonRealizarPedidoClick(TObject *Sender);
+	void __fastcall ButtonInitProcessClick(TObject *Sender);
+	void __fastcall TimerProcesoTimer(TObject *Sender);
+
 
 
 private:	// User declarations

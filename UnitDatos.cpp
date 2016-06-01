@@ -163,9 +163,10 @@ void LeerArchivoMaterias(void)
 void NuevoPedido(int _id_formula, double _cantidad, int _prioridad)
 {
 	FILE* F;
-	int id_pedido, id_pedido_ultimo=0, id_formula, cantidad, prioridad;
+	int id_pedido, id_pedido_ultimo=0, id_formula, prioridad;
+	double cantidad;
 
-	F = fopen("file_pedidosNuevos.txt", "r");   //Abro para leer
+	F = fopen("file_pedidosPendientes.txt", "r");   //Abro para leer
 	if (!F) ShowMessage("Error abriendo el archivo");
 
 	while (!feof(F))
