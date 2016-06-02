@@ -1,0 +1,172 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+
+#include "UnitProcesos.h"
+#include "UnitDatos.h"
+#include <stdio.h>
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+bool proceso_iniciado, parar_proceso;
+enum Estado{disponibilidad, dosificar, mezclado, finaliza, parada};
+Estado estado;
+
+int dosi_id_pedido, dosi_formula, dosi_prioridad;
+float dosi_cantidad;
+
+void IniciarProceso (void)
+{
+	proceso_iniciado = true;
+	parar_proceso = false;
+
+	//AQUI COMPROBAMOS EL PEDIDO QUE VAMOS A PROCESAR
+	dosi_id_pedido = LeerIdPedido();
+	BuscarPedido(dosi_id_pedido);
+	estado = disponibilidad;
+}
+
+void PararProceso (void)
+{
+	parar_proceso = true;
+}
+
+bool InfoProceso (void){return proceso_iniciado;}
+
+//COMPROBACIÓN DE PEDIDO EN ARCHIVO
+void ArchivoComprobacion(void)
+{
+	int id_pedido_pendiente, id_pedido_finalizado, id_formula_pendiente, id_formula_finalizado, prioridad;
+	double cantidad_pendiente, cantidad_finalizado;
+
+	FILE* F_pendientes, *F_finalizados;
+
+	F_pendientes = fopen("file_pedidosPendientes.txt", "r");   //Abro para leer
+	if (!F_pendientes) ShowMessage("Error abriendo el archivo file_pedidosPendientes.txt");
+
+	F_finalizados = fopen("file_pedidosFinalizados.txt", "r");   //Abro para leer
+	if (!F_finalizados) ShowMessage("Error abriendo el archivo file_pedidosFinalizados.txt");
+
+	while (!feof(F_pendientes))
+	{
+		fscanf(F_pendientes, "%d %d %f %d", &id_pedido_pendiente, &id_formula_pendiente, &cantidad_pendiente, &prioridad);
+
+		while(!feof(F_finalizados))
+		{
+			fscanf(F_finalizados, "%d %d %f %d", &id_pedido_finalizado, &id_formula_finalizado, &cantidad_finalizado, &prioridad);
+			ShowMessage(id_pedido_pendiente);
+			ShowMessage(id_pedido_finalizado);
+			if(id_pedido_finalizado == id_pedido_pendiente)
+			{
+				rewind(F_finalizados);
+				break;
+			}
+		}
+		if (id_pedido_finalizado != id_pedido_pendiente) {
+			dosi_formula = id_formula_pendiente;
+			dosi_cantidad = cantidad_pendiente;
+			//ShowMessage (dosi_formula);
+			//ShowMessage (dosi_cantidad);
+			break;
+		}
+	}
+	fclose(F_pendientes);
+	fclose(F_finalizados);
+}
+
+int LeerIdPedido(void)
+{
+	FILE *F;
+	int id_pedido;
+
+	F = fopen("file_idPedidoAFabricar.txt", "r");   //Abro para leer
+	if (!F) ShowMessage("Error abriendo el archivo file_idPedidoAFabricar.txt");
+
+	fscanf(F, "%d", &id_pedido);
+
+	fclose(F);
+	return id_pedido;
+}
+
+void GuardarIdPedido (int id_pedido)
+{
+	FILE *F;
+
+	F = fopen("file_idPedidoAFabricar.txt", "w"); //Abri fichero sobreescritura
+	if (!F) ShowMessage("Error abriendo el archivo file_idPedidoAFabricar.txt");
+
+	fprintf(F, "%d", id_pedido);
+
+	fclose(F);
+}
+
+void BuscarPedido (int id_pedido)
+{
+	FILE *F;
+	char text[30];
+
+	F = fopen("file_pedidosPendientes.txt", "r");   //Abro para leer
+	if (!F) ShowMessage("Error abriendo el archivo file_pedidosPendientes.txt");
+
+	while(!feof(F))
+	{
+		fscanf(F, "%d %d %f %d", &dosi_id_pedido, &dosi_formula, &dosi_cantidad, &dosi_prioridad);
+		//ShowMessage(cantidad);
+
+		if(dosi_id_pedido == id_pedido){
+			sprintf(text, "Se va a tramitar el pedido %d, %d, %.2f", dosi_id_pedido, dosi_formula, dosi_cantidad);
+			ShowMessage(text);
+			//fclose(F);
+			return;
+		}
+	}
+}
+
+void Proceso (void)
+{
+	float cantidad_necesitada[3];
+
+	if(proceso_iniciado)
+	{
+		switch (estado){ //MAQUINA DE ESTADOS
+		case disponibilidad:
+			//COMPROBAMOS QUE DISPONEMOS DE SUFICIENTE MATERIA
+			//MATERIA 1
+			for(int i=0; i<3; i++)
+			{
+			   cantidad_necesitada[i] = formula[dosi_formula].Proporcion(i) * dosi_cantidad;
+			   ShowMessage(cantidad_necesitada[i]);
+			}
+			//if (deposito.[) {
+
+			//}
+			break;
+		case dosificar:
+			//REALIZAMOS LA DOSIFICACIÓN Y PESADO
+			break;
+		case mezclado:
+			//ABRIMOS VALVULA DE BÁSCULA Y ENCENDEMOS MOTOR MEZCLADORA
+			break;
+		case finaliza:
+			//GENERAMOS REPORTE EN "PEDIDOS_TERMINADOS.TXT"
+			//MOSTRAMOS AL USUARIO QUE SE HA TERMINADO EL PEDIDO
+
+			if(parar_proceso)
+			{
+				estado = parada;
+			}else{
+				//estado = inicializacion;
+			}
+			break;
+		case parada:
+			//NO HACEMOS NADA
+			break;
+
+
+
+		default: break;
+		}
+
+
+	}
+}

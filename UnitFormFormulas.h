@@ -34,6 +34,7 @@ __published:	// IDE-managed Components
 	TLabel *LabelProporcion3;
 	TLabel *Label3;
 	TEdit *EditDescripcion;
+	TLabel *Label4;
 	void __fastcall ComboBoxFormulaChange(TObject *Sender);
 	void __fastcall TrackBarProporcion1Change(TObject *Sender);
 	void __fastcall TrackBarProporcion2Change(TObject *Sender);

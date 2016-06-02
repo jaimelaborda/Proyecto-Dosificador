@@ -72,6 +72,7 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonRealizarPedidoClick(TObject *Sender);
 	void __fastcall ButtonInitProcessClick(TObject *Sender);
 	void __fastcall TimerProcesoTimer(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
 
 
 

@@ -187,3 +187,10 @@ void __fastcall TFormDosificador::TimerProcesoTimer(TObject *Sender)
 
 
 
+void __fastcall TFormDosificador::FormShow(TObject *Sender)
+{
+	LeerArchivoMaterias();
+	LeerArchivoFormulas();
+}
+//---------------------------------------------------------------------------
+

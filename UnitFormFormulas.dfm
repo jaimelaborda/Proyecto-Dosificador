@@ -64,6 +64,13 @@ object FormFormulas: TFormFormulas
     Height = 13
     Caption = 'Descripci'#243'n'
   end
+  object Label4: TLabel
+    Left = 174
+    Top = 27
+    Width = 52
+    Height = 13
+    Caption = 'FORMULA:'
+  end
   object ButtonExit: TButton
     Left = 512
     Top = 345
@@ -79,7 +86,7 @@ object FormFormulas: TFormFormulas
     Width = 145
     Height = 21
     TabOrder = 1
-    Text = 'ComboBoxFormula'
+    Text = 'Elige la formula a editar...'
     OnChange = ComboBoxFormulaChange
     Items.Strings = (
       'Formula 1'
@@ -104,7 +111,6 @@ object FormFormulas: TFormFormulas
     Width = 145
     Height = 21
     TabOrder = 3
-    Text = 'ComboBoxMateria1'
     Items.Strings = (
       '1. Maiz'
       '2. Centeno'
@@ -116,7 +122,6 @@ object FormFormulas: TFormFormulas
     Width = 145
     Height = 21
     TabOrder = 4
-    Text = 'ComboBox2'
     Items.Strings = (
       '1. Maiz'
       '2. Centeno'
@@ -128,7 +133,6 @@ object FormFormulas: TFormFormulas
     Width = 145
     Height = 21
     TabOrder = 5
-    Text = 'ComboBox2'
     Items.Strings = (
       '1. Maiz'
       '2. Centeno'

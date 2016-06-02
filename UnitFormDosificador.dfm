@@ -15,6 +15,7 @@ object FormDosificador: TFormDosificador
   Position = poScreenCenter
   WindowState = wsMaximized
   OnPaint = FormPaint
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -22752,7 +22753,7 @@ object FormDosificador: TFormDosificador
     end
   end
   object TimerProceso: TTimer
-    Interval = 10000
+    Interval = 5000
     OnTimer = TimerProcesoTimer
     Left = 1160
     Top = 232

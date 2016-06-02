@@ -3,21 +3,27 @@
 #pragma hdrstop
 
 #include "UnitProcesos.h"
+#include "UnitDatos.h"
 #include <stdio.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
 bool proceso_iniciado, parar_proceso;
-enum Estado{inicializacion, configuracion, disponibilidad, dosificar, mezclado, finaliza, parada};
+enum Estado{disponibilidad, dosificar, mezclado, finaliza, parada};
 Estado estado;
 
-int dosi_formula;
-double dosi_cantidad;
+int dosi_id_pedido, dosi_formula, dosi_prioridad;
+float dosi_cantidad;
 
 void IniciarProceso (void)
 {
 	proceso_iniciado = true;
-	estado = inicializacion;
+	parar_proceso = false;
+
+	//AQUI COMPROBAMOS EL PEDIDO QUE VAMOS A PROCESAR
+	dosi_id_pedido = LeerIdPedido();
+	BuscarPedido(dosi_id_pedido);
+	estado = disponibilidad;
 }
 
 void PararProceso (void)
@@ -48,6 +54,8 @@ void ArchivoComprobacion(void)
 		while(!feof(F_finalizados))
 		{
 			fscanf(F_finalizados, "%d %d %f %d", &id_pedido_finalizado, &id_formula_finalizado, &cantidad_finalizado, &prioridad);
+			ShowMessage(id_pedido_pendiente);
+			ShowMessage(id_pedido_finalizado);
 			if(id_pedido_finalizado == id_pedido_pendiente)
 			{
 				rewind(F_finalizados);
@@ -57,8 +65,8 @@ void ArchivoComprobacion(void)
 		if (id_pedido_finalizado != id_pedido_pendiente) {
 			dosi_formula = id_formula_pendiente;
 			dosi_cantidad = cantidad_pendiente;
-			ShowMessage (dosi_formula);
-			ShowMessage (dosi_cantidad);
+			//ShowMessage (dosi_formula);
+			//ShowMessage (dosi_cantidad);
 			break;
 		}
 	}
@@ -66,22 +74,94 @@ void ArchivoComprobacion(void)
 	fclose(F_finalizados);
 }
 
+int LeerIdPedido(void)
+{
+	FILE *F;
+	int id_pedido;
+
+	F = fopen("file_idPedidoAFabricar.txt", "r");   //Abro para leer
+	if (!F) ShowMessage("Error abriendo el archivo file_idPedidoAFabricar.txt");
+
+	fscanf(F, "%d", &id_pedido);
+
+	fclose(F);
+	return id_pedido;
+}
+
+void GuardarIdPedido (int id_pedido)
+{
+	FILE *F;
+
+	F = fopen("file_idPedidoAFabricar.txt", "w"); //Abri fichero sobreescritura
+	if (!F) ShowMessage("Error abriendo el archivo file_idPedidoAFabricar.txt");
+
+	fprintf(F, "%d", id_pedido);
+
+	fclose(F);
+}
+
+void BuscarPedido (int id_pedido)
+{
+	FILE *F;
+	char text[30];
+
+	F = fopen("file_pedidosPendientes.txt", "r");   //Abro para leer
+	if (!F) ShowMessage("Error abriendo el archivo file_pedidosPendientes.txt");
+
+	while(!feof(F))
+	{
+		fscanf(F, "%d %d %f %d", &dosi_id_pedido, &dosi_formula, &dosi_cantidad, &dosi_prioridad);
+		//ShowMessage(cantidad);
+
+		if(dosi_id_pedido == id_pedido){
+			sprintf(text, "Se va a tramitar el pedido %d, %d, %.2f", dosi_id_pedido, dosi_formula, dosi_cantidad);
+			ShowMessage(text);
+			//fclose(F);
+			return;
+		}
+	}
+}
+
 void Proceso (void)
 {
+	float cantidad_necesaria[3];
+	int materias_necesarias[3];
+	int depositos_necesarios[3];
+	int disponible=0;
+	char text[40];
+
 	if(proceso_iniciado)
 	{
 		switch (estado){ //MAQUINA DE ESTADOS
-		case inicializacion:
-			parar_proceso = false;
-			estado = configuracion;
-			break;
-		case configuracion:
-			//AQUI COMPROBAMOS EL PEDIDO QUE VAMOS A PROCESAR
-			ArchivoComprobacion();
-
-			break;
 		case disponibilidad:
 			//COMPROBAMOS QUE DISPONEMOS DE SUFICIENTE MATERIA
+			//MATERIA 1
+			for(int i=0; i<3; i++)
+			{
+				materias_necesarias[i] = formula[dosi_formula].IdMateria(i);
+				cantidad_necesaria[i] = formula[dosi_formula].Proporcion(i) * dosi_cantidad;
+				depositos_necesarios[i] = materia[materias_necesarias[i]].IdDeposito();
+
+				//ShowMessage(materias_necesarias[i] = formula[dosi_formula].IdMateria(i));
+				//ShowMessage((deposito[materia[materias_necesarias[i]].IdDeposito()].Cantidad()));
+
+				if(deposito[depositos_necesarios[i]].Cantidad() < cantidad_necesaria[i]) //Si lo que hay en el deposito es menor que lo necesario
+				{
+					sprintf(text, "El Deposito %d no tiene suficiente %s", materia[materias_necesarias[i]].IdDeposito()+1, materia[materias_necesarias[i]].Nombre());
+					ShowMessage(text);
+				}else{
+					disponible++;
+                }
+			   //ShowMessage(cantidad_necesitada[i]);
+			   //ShowMessage(formula[dosi_formula].Proporcion(i));
+			}
+			if (disponible == 3) {
+				ShowMessage("Cantidad en depositos disponible");
+				estado = dosificar;
+				disponible = 0;
+			}else{
+				estado = parada;  //Si no hay disponibilidad en cualquiera de los depositos para el proceso
+            }
 			break;
 		case dosificar:
 			//REALIZAMOS LA DOSIFICACIÓN Y PESADO
@@ -97,7 +177,7 @@ void Proceso (void)
 			{
 				estado = parada;
 			}else{
-				estado = inicializacion;
+				//estado = inicializacion;
 			}
 			break;
 		case parada:

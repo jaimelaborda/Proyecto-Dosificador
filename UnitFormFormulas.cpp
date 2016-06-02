@@ -96,10 +96,30 @@ void __fastcall TFormFormulas::ButtonRecuperarClick(TObject *Sender)
 void __fastcall TFormFormulas::FormShow(TObject *Sender)
 {
 	LeerArchivoFormulas();
+
+	//COMBOBOX FORMULAS
 	ComboBoxFormula->Clear();
 	for(int i=0; i<5; i++)
 	{
 		ComboBoxFormula->Items->Add(formula[i].Nombre());
+	}
+	//COMBOBOX MATERIA1
+	ComboBoxMateria1->Clear();
+	for(int i=0; i<10; i++)
+	{
+		ComboBoxMateria1->Items->Add(materia[i].Nombre());
+	}
+	//COMBOBOX MATERIA12
+	ComboBoxMateria2->Clear();
+	for(int i=0; i<10; i++)
+	{
+		ComboBoxMateria2->Items->Add(materia[i].Nombre());
+	}
+	//COMBOBOX MATERIA3
+	ComboBoxMateria3->Clear();
+	for(int i=0; i<10; i++)
+	{
+		ComboBoxMateria3->Items->Add(materia[i].Nombre());
 	}
 }
 //---------------------------------------------------------------------------
