@@ -155,8 +155,8 @@ object FormSimulacion: TFormSimulacion
   object LabelMez: TLabel
     Left = 287
     Top = 356
-    Width = 7
-    Height = 33
+    Width = 6
+    Height = 13
     Caption = '0'
   end
   object LabelValMez: TLabel
@@ -239,7 +239,7 @@ object FormSimulacion: TFormSimulacion
     Top = 297
     Width = 150
     Height = 45
-    Max = 10000
+    Max = 1000
     Frequency = 100
     TabOrder = 7
     OnChange = TrackBarBasculaChange

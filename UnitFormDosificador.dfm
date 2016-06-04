@@ -22621,14 +22621,14 @@ object FormDosificador: TFormDosificador
       00000049454E44AE426082}
     Proportional = True
   end
-  object Shape8: TShape
+  object ShapeValvMezcladora: TShape
     Left = 609
     Top = 618
     Width = 47
     Height = 33
     Brush.Color = clDefault
   end
-  object Shape7: TShape
+  object ShapeStateMezcladora: TShape
     Left = 615
     Top = 520
     Width = 30
@@ -22753,7 +22753,8 @@ object FormDosificador: TFormDosificador
     end
   end
   object TimerProceso: TTimer
-    Interval = 5000
+    Enabled = False
+    Interval = 100
     OnTimer = TimerProcesoTimer
     Left = 1160
     Top = 232

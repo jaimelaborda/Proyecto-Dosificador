@@ -178,10 +178,22 @@ void NuevoPedido(int _id_formula, double _cantidad, int _prioridad)
 	}
 	fclose(F);
 
-	F = fopen("file_pedidosNuevos.txt", "a");   //Abro con cursor al final para escribir
+	F = fopen("file_pedidosPendientes.txt", "a");   //Abro con cursor al final para escribir
 	if (!F) ShowMessage("Error abriendo el archivo");
 
 	fprintf(F, "%d %d %.2f %d\n", id_pedido_ultimo+1, _id_formula, _cantidad, _prioridad);
+
+	fclose(F);
+}
+
+void GenerarReporte(int id, int formula, float cantidad)
+{
+	FILE *F;
+
+	F = fopen("file_pedidosFinalizados.txt", "a");   //Abro con cursor al final para escribir
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	fprintf(F, "%d %d %.2f\n", id, formula, cantidad);
 
 	fclose(F);
 }

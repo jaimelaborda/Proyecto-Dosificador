@@ -3,13 +3,14 @@
 #pragma hdrstop
 
 #include "UnitProcesos.h"
+#include "UnitFormDosificador.h"
 #include "UnitDatos.h"
 #include <stdio.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
 bool proceso_iniciado, parar_proceso;
-enum Estado{disponibilidad, dosificar, mezclado, finaliza, parada};
+enum Estado{disponibilidad, dosificar, mezclado, finaliza, parada_automatica};
 Estado estado;
 
 int dosi_id_pedido, dosi_formula, dosi_prioridad;
@@ -29,6 +30,7 @@ void IniciarProceso (void)
 void PararProceso (void)
 {
 	parar_proceso = true;
+	//proceso_iniciado = false;
 }
 
 bool InfoProceso (void){return proceso_iniciado;}
@@ -124,11 +126,14 @@ void BuscarPedido (int id_pedido)
 
 void Proceso (void)
 {
-	float cantidad_necesaria[3];
-	int materias_necesarias[3];
-	int depositos_necesarios[3];
-	int disponible=0;
-	char text[40];
+	static float cantidad_necesaria[3];
+	static float peso_acumulado;
+	static int materias_necesarias[3];
+	static int depositos_necesarios[3];
+	static int disponible=0;
+	static char text[40];
+	static int i = 0;
+	static tiempo=0;
 
 	if(proceso_iniciado)
 	{
@@ -159,33 +164,87 @@ void Proceso (void)
 				ShowMessage("Cantidad en depositos disponible");
 				estado = dosificar;
 				disponible = 0;
+				i=0;
+				peso_acumulado=0;
+				FormDosificador->TimerProceso->Enabled = true;//Habilito el timer de proceso
 			}else{
-				estado = parada;  //Si no hay disponibilidad en cualquiera de los depositos para el proceso
+				estado = parada_automatica;  //Si no hay disponibilidad en cualquiera de los depositos para el proceso
+				Proceso();
             }
 			break;
 		case dosificar:
 			//REALIZAMOS LA DOSIFICACIÓN Y PESADO
+			//DOSIFICACIÓN
+			if(bascula.Peso() < (cantidad_necesaria[i]+peso_acumulado))
+			{
+				deposito[depositos_necesarios[i]].Abrir();
+			}else{
+				deposito[depositos_necesarios[i]].Cerrar();
+				peso_acumulado = bascula.Peso();
+				i++; //Siguiente materia
+
+				if(i==3)  //Finalización de dosificación
+				{
+					i=0;
+					estado = mezclado;
+					tiempo = 0;
+                }
+			}
+			if (parar_proceso) estado = parada_automatica;
 			break;
 		case mezclado:
 			//ABRIMOS VALVULA DE BÁSCULA Y ENCENDEMOS MOTOR MEZCLADORA
+			//ABRIR VALVULA
+
+			if (tiempo < 100)  //A los 10 segundos
+			{
+				bascula.Abrir();
+				FormDosificador->ShapeValvulaBasc->Brush->Color = clGreen;
+			}else{
+				bascula.Cerrar();
+				FormDosificador->ShapeValvulaBasc->Brush->Color = clRed;
+				mezcladora.MotorOn();
+				FormDosificador->ShapeStateMezcladora->Brush->Color = clGreen;
+				if (tiempo == 200)
+				{
+					mezcladora.MotorOff();
+					FormDosificador->ShapeStateMezcladora->Brush->Color = clRed;
+					FormDosificador->ShapeValvMezcladora->Brush->Color = clGreen;
+					tiempo=0;
+					estado = finaliza;
+					ShowMessage("Pedido Finalizado");
+				}
+			}
+			tiempo++;
+			if (parar_proceso) estado = parada_automatica;
 			break;
 		case finaliza:
 			//GENERAMOS REPORTE EN "PEDIDOS_TERMINADOS.TXT"
 			//MOSTRAMOS AL USUARIO QUE SE HA TERMINADO EL PEDIDO
+			GuardarIdPedido(dosi_id_pedido+1); //Actualizo el pedido siguiente
+			GenerarReporte(dosi_id_pedido, dosi_formula, dosi_cantidad);
+			FormDosificador->TimerProceso->Enabled = false;//Deshabilito el timer de proceso
+			break;
 
-			if(parar_proceso)
+		case parada_automatica:
+			//PARAMOS EL PROCESO FORZADAMENTE E INFORMAMOS AL USUARIO
+			FormDosificador->TimerProceso->Enabled = false;//Deshabilito el timer de proceso
+			proceso_iniciado = false;
+			FormDosificador->ShapeProceso->Brush->Color = clRed;
+			FormDosificador->ButtonInitProcess->Caption = "INICIAR PROCESO";
+
+			for (int i=0; i<5; i++)
 			{
-				estado = parada;
-			}else{
-				//estado = inicializacion;
+				deposito[i].Cerrar();
 			}
+
+			bascula.Cerrar();
+			mezcladora.Cerrar();
+			disponible = 0;
+			proceso_iniciado = false;
+
+			ShowMessage("Proceso terminado automaticamente debido a error");
 			break;
-		case parada:
-			//NO HACEMOS NADA
-			break;
-
-
-
 		default: break;
 		}
 

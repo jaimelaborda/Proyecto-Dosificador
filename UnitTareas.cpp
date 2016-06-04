@@ -24,11 +24,16 @@ void ActualizarGUI (void)
 	FormDosificador->ProgressBarBascula->Position = (int)bascula.Peso();
 	FormDosificador->ShapeMezcladora->Height = - mezcladora.Cantidad()*124/10000;
 
-	//ShowMessage(FormDosificador->Deposito1->Color);
-	FormDosificador->Deposito1->Color = deposito[0].Color();
-	FormDosificador->Deposito1->Paint();
-
-
+	if(deposito[0].EstadoValvula()) FormDosificador->Shape1->Brush->Color = deposito[0].Color();
+		else FormDosificador->Shape1->Brush->Color = clMedGray;
+	if(deposito[1].EstadoValvula()) FormDosificador->Shape2->Brush->Color = deposito[1].Color();
+		else FormDosificador->Shape2->Brush->Color = clMedGray;
+	if(deposito[2].EstadoValvula()) FormDosificador->Shape3->Brush->Color = deposito[2].Color();
+		else FormDosificador->Shape3->Brush->Color = clMedGray;
+	if(deposito[3].EstadoValvula()) FormDosificador->Shape4->Brush->Color = deposito[3].Color();
+		else FormDosificador->Shape4->Brush->Color = clMedGray;
+	if(deposito[4].EstadoValvula()) FormDosificador->Shape5->Brush->Color = deposito[4].Color();
+		else FormDosificador->Shape5->Brush->Color = clMedGray;
 }
 
 

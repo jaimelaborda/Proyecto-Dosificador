@@ -141,8 +141,6 @@ void __fastcall TFormDosificador::FormPaint(TObject *Sender)
 
 	PaintBoxBasc->Canvas->Brush->Color=clWhite;
 	PaintBoxBasc->Canvas->Polygon(PtBascula, 6);
-
-	Shape4->Brush->Color = deposito[0].Color();
 }
 //---------------------------------------------------------------------------
 
@@ -165,16 +163,18 @@ void __fastcall TFormDosificador::ButtonInitProcessClick(TObject *Sender)
 {
 	if (InfoProceso()) {
 		PararProceso();
-		TimerProceso->Enabled = false;
+		//TimerProceso->Enabled = false;
 		ShapeProceso->Brush->Color = clRed;
+		FormDosificador->ShapeValvMezcladora->Brush->Color = clRed;
 		ButtonInitProcess->Caption = "INICIAR PROCESO";
 	}else{
 		if(MessageDlg("¿Desea iniciar el Proceso?",mtConfirmation,mbYesNo,0)==mrYes)
+		{
 			IniciarProceso();
-
-		TimerProceso->Enabled = true;
-		ShapeProceso->Brush->Color = clGreen;
-		ButtonInitProcess->Caption = "PARAR PROCESO";
+			ShapeProceso->Brush->Color = clGreen;
+			ButtonInitProcess->Caption = "PARAR PROCESO";
+			Proceso(); //ejecuto proceso una vez
+        }
 	}
 }
 //---------------------------------------------------------------------------

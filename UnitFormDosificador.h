@@ -52,12 +52,12 @@ __published:	// IDE-managed Components
 	TShape *Shape6;
 	TShape *ShapeMezcladora;
 	TImage *Image2;
-	TShape *Shape8;
+	TShape *ShapeValvMezcladora;
 	TButton *Button1;
 	TGroupBox *GroupBox1;
 	TButton *ButtonRealizarPedido;
 	TProgressBar *ProgressBarBascula;
-	TShape *Shape7;
+	TShape *ShapeStateMezcladora;
 	TButton *ButtonInitProcess;
 	TTimer *TimerProceso;
 	TShape *ShapeProceso;

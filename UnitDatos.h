@@ -102,6 +102,7 @@ void LeerArchivoMaterias(void);
 
 //PEDIDOS
 void NuevoPedido(int _id_formula, double _cantidad, int _prioridad);
+void GenerarReporte(int id, int formula, float cantidad);
 
 extern CDeposito deposito[5];
 extern CMateria materia[10];
