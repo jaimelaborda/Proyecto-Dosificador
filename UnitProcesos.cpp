@@ -30,7 +30,7 @@ void IniciarProceso (void)
 void PararProceso (void)
 {
 	parar_proceso = true;
-	//proceso_iniciado = false;
+	proceso_iniciado = false;
 }
 
 bool InfoProceso (void){return proceso_iniciado;}
@@ -135,7 +135,7 @@ void Proceso (void)
 	static int i = 0;
 	static tiempo=0;
 
-	if(proceso_iniciado)
+	if(proceso_iniciado | parar_proceso)
 	{
 		switch (estado){ //MAQUINA DE ESTADOS
 		case disponibilidad:
@@ -199,17 +199,13 @@ void Proceso (void)
 			if (tiempo < 100)  //A los 10 segundos
 			{
 				bascula.Abrir();
-				FormDosificador->ShapeValvulaBasc->Brush->Color = clGreen;
 			}else{
 				bascula.Cerrar();
-				FormDosificador->ShapeValvulaBasc->Brush->Color = clRed;
 				mezcladora.MotorOn();
-				FormDosificador->ShapeStateMezcladora->Brush->Color = clGreen;
 				if (tiempo == 200)
 				{
 					mezcladora.MotorOff();
-					FormDosificador->ShapeStateMezcladora->Brush->Color = clRed;
-					FormDosificador->ShapeValvMezcladora->Brush->Color = clGreen;
+					mezcladora.Abrir();
 					tiempo=0;
 					estado = finaliza;
 					ShowMessage("Pedido Finalizado");
