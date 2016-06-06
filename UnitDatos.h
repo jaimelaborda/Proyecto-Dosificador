@@ -100,6 +100,9 @@ void LeerArchivoFormulas(void);
 void GuardarArchivoMaterias(void);
 void LeerArchivoMaterias(void);
 
+void GuardarArchivoDepositos(void);
+void LeerArchivoDepositos(void);
+
 //PEDIDOS
 void NuevoPedido(int _id_formula, double _cantidad, int _prioridad);
 void GenerarReporte(int id, int formula, float cantidad);

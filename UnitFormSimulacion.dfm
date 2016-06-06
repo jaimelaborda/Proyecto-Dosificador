@@ -239,7 +239,7 @@ object FormSimulacion: TFormSimulacion
     Top = 297
     Width = 150
     Height = 45
-    Max = 1000
+    Max = 5000
     Frequency = 100
     TabOrder = 7
     OnChange = TrackBarBasculaChange

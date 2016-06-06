@@ -6,7 +6,7 @@
         <AppType>Application</AppType>
         <MainSource>ProjectDosificador.cpp</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
     </PropertyGroup>
@@ -101,6 +101,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <Icon_MainIcon>ProjectDosificador_Icon.ico</Icon_MainIcon>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <LinkPackageStatics>paquete.lib;PaqueteSII.lib</LinkPackageStatics>
@@ -113,10 +114,22 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <LinkPackageImports>rtl.bpi;vcl.bpi;vclimg.bpi</LinkPackageImports>
+        <LinkPackageStatics>paquete.lib;PaqueteSII.lib</LinkPackageStatics>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="ABOUT.cpp">
+            <Form>AboutBox</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>ABOUT.h</DependentOn>
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <RcItem Include="images\icon.ico">
+            <ResourceType>ICON</ResourceType>
+            <ResourceId>Icon_1</ResourceId>
+        </RcItem>
         <CppCompile Include="ProjectDosificador.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
@@ -174,9 +187,10 @@
         </CppCompile>
         <FormResources Include="UnitFormNuevoPedido.dfm"/>
         <FormResources Include="UnitFormFormulas.dfm"/>
-        <FormResources Include="UnitFormSimulacion.dfm"/>
         <FormResources Include="UnitFormEditMaterias.dfm"/>
+        <FormResources Include="UnitFormSimulacion.dfm"/>
         <FormResources Include="UnitFormDosificador.dfm"/>
+        <FormResources Include="ABOUT.dfm"/>
         <FormResources Include="UnitFormConfigDepositos.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -205,6 +219,7 @@
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="D:\Users\Public\Documents\Embarcadero\Studio\17.0\BPL\paquete.bpl">paquete</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k230.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp230.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>
@@ -243,6 +258,12 @@
                 <DeployFile LocalName=".\Win32\Debug\ProjectDosificador.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>ProjectDosificador.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="images\icon.ico" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

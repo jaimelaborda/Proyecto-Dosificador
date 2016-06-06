@@ -11,6 +11,7 @@
 #include "UnitDatos.h"
 #include "UnitTareas.h"
 #include "UnitProcesos.h"
+#include "ABOUT.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "TDeposito"
@@ -53,11 +54,6 @@ void __fastcall TFormDosificador::Formulas1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
-
-
-
 void __fastcall TFormDosificador::ButtonConfigurarDepositosClick(TObject *Sender)
 
 {
@@ -70,7 +66,7 @@ void __fastcall TFormDosificador::ButtonConfigurarDepositosClick(TObject *Sender
 
 void __fastcall TFormDosificador::FormPaint(TObject *Sender)
 {
-	 TPoint PtDeposito[] = {Point(0, 0), Point(PaintBoxDep1->Width*0.5, PaintBoxDep1->Height), Point(PaintBoxDep1->Width, 0), Point(0,0)};
+	TPoint PtDeposito[] = {Point(0, 0), Point(PaintBoxDep1->Width*0.5, PaintBoxDep1->Height), Point(PaintBoxDep1->Width, 0), Point(0,0)};
 
 	/*PaintBoxDep1->Canvas->Brush->Color=clRed;
 	PaintBoxDep1->Canvas->Polygon(PtDeposito, 3); */
@@ -190,6 +186,27 @@ void __fastcall TFormDosificador::FormShow(TObject *Sender)
 {
 	LeerArchivoMaterias();
 	LeerArchivoFormulas();
+	LeerArchivoDepositos();
+
+	AboutBox->ShowModal();
 }
 //---------------------------------------------------------------------------
+
+
+void __fastcall TFormDosificador::Salir1Click(TObject *Sender)
+{
+	Close();
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TFormDosificador::Sobre1Click(TObject *Sender)
+{
+	AboutBox->ShowModal();
+}
+//---------------------------------------------------------------------------
+
 

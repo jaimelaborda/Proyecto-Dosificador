@@ -60,6 +60,11 @@ __published:	// IDE-managed Components
 	TButton *ButtonInitProcess;
 	TTimer *TimerProceso;
 	TShape *ShapeProceso;
+	TLabel *LabelPeso;
+	TMenuItem *Salir1;
+	TMenuItem *Ayuda1;
+	TMenuItem *Sobre1;
+	TImage *Image3;
 	void __fastcall Button_SimulacionClick(TObject *Sender);
 	void __fastcall TimerGUITimer(TObject *Sender);
 	void __fastcall ButtonFormulasClick(TObject *Sender);
@@ -67,11 +72,13 @@ __published:	// IDE-managed Components
 	void __fastcall Formulas1Click(TObject *Sender);
 	void __fastcall ButtonConfigurarDepositosClick(TObject *Sender);
 	void __fastcall FormPaint(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall ButtonRealizarPedidoClick(TObject *Sender);
 	void __fastcall ButtonInitProcessClick(TObject *Sender);
 	void __fastcall TimerProcesoTimer(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
+	void __fastcall Salir1Click(TObject *Sender);
+	void __fastcall Sobre1Click(TObject *Sender);
+
 
 
 

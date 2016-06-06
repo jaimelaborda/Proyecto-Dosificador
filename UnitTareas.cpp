@@ -2,6 +2,7 @@
 
 #pragma hdrstop
 
+#include <stdio.h>
 #include "UnitTareas.h"
 #include "UnitDatos.h"
 #include "UnitFormDosificador.h"
@@ -11,6 +12,8 @@
 
 void ActualizarGUI (void)
 {
+	char text[20];
+
 	/*ACTUALIZAR DEPÓSITOS*/
 	FormDosificador->Deposito1->Cantidad = (float)deposito[0].Cantidad()/1000;
 	FormDosificador->Deposito2->Cantidad = (float)deposito[1].Cantidad()/1000;
@@ -18,6 +21,10 @@ void ActualizarGUI (void)
 	FormDosificador->Deposito4->Cantidad = (float)deposito[3].Cantidad()/1000;
 	FormDosificador->Deposito5->Cantidad = (float)deposito[4].Cantidad()/1000;
 	FormDosificador->ProgressBarBascula->Position = (int)bascula.Peso();
+
+	sprintf(text, "%.2f kg", bascula.Peso());
+	FormDosificador->LabelPeso->Caption = text;
+
 	FormDosificador->ShapeMezcladora->Height = - mezcladora.Cantidad()*124/10000;
 
 	if(deposito[0].EstadoValvula()) FormDosificador->Shape1->Brush->Color = deposito[0].Color();

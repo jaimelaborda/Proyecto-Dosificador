@@ -105,7 +105,7 @@ void GuardarIdPedido (int id_pedido)
 void BuscarPedido (int id_pedido)
 {
 	FILE *F;
-	char text[30];
+	char text[80];
 
 	F = fopen("file_pedidosPendientes.txt", "r");   //Abro para leer
 	if (!F) ShowMessage("Error abriendo el archivo file_pedidosPendientes.txt");
@@ -116,12 +116,14 @@ void BuscarPedido (int id_pedido)
 		//ShowMessage(cantidad);
 
 		if(dosi_id_pedido == id_pedido){
-			sprintf(text, "Se va a tramitar el pedido %d, %d, %.2f", dosi_id_pedido, dosi_formula, dosi_cantidad);
+			sprintf(text, "Se va a tramitar el pedido nº: %d\n*Formula nº: %d, %s\n*Cantidad(kg): %.2f", dosi_id_pedido, dosi_formula, formula[dosi_formula].Nombre(), dosi_cantidad);
 			ShowMessage(text);
 			//fclose(F);
 			return;
 		}
 	}
+	ShowMessage("No hay ningún pedido pendiente. \nRealice un nuevo pedido!");
+	estado = parada_automatica;
 }
 
 void Proceso (void)

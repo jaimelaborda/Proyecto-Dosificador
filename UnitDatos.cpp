@@ -159,6 +159,31 @@ void LeerArchivoMaterias(void)
 	fclose(F);
 }
 
+void GuardarArchivoDepositos(void)
+{
+	FILE* F;
+
+	F = fopen("file_depositos.bin", "wb");
+
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	fwrite(deposito, sizeof(CDeposito), 5, F);
+
+	fclose(F);
+}
+void LeerArchivoDepositos(void)
+{
+	FILE* F;
+
+	F = fopen("file_depositos.bin", "rb");
+
+	if (!F) ShowMessage("Error abriendo el archivo");
+
+	fread(deposito, sizeof(deposito), 5, F);
+
+	fclose(F);
+}
+
 //PEDIDOS
 void NuevoPedido(int _id_formula, double _cantidad, int _prioridad)
 {

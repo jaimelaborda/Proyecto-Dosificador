@@ -25,6 +25,7 @@ void __fastcall TFormConfigDepositos::ComboBoxDepChange(TObject *Sender)
 {
 	id_deposito = ComboBoxDep->ItemIndex;
 
+	ColorBox->Selected = deposito[id_deposito].Color();
 	ComboBoxMateria->ItemIndex = IdMateria(id_deposito);
 }
 //---------------------------------------------------------------------------
@@ -35,6 +36,7 @@ void __fastcall TFormConfigDepositos::ButtonGuardarClick(TObject *Sender)
 	deposito[id_deposito].Color(ColorBox->Selected);
 
 	materia[id_materia].IdDeposito(id_deposito);
+	GuardarArchivoDepositos();
 }
 //---------------------------------------------------------------------------
 

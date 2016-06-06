@@ -9,9 +9,10 @@
 USEFORM("UnitFormNuevoPedido.cpp", FormNuevoPedido);
 USEFORM("UnitFormFormulas.cpp", FormFormulas);
 USEFORM("UnitFormSimulacion.cpp", FormSimulacion);
+USEFORM("UnitFormEditMaterias.cpp", FormEditMaterias);
 USEFORM("UnitFormDosificador.cpp", FormDosificador);
 USEFORM("UnitFormConfigDepositos.cpp", FormConfigDepositos);
-USEFORM("UnitFormEditMaterias.cpp", FormEditMaterias);
+USEFORM("ABOUT.cpp", AboutBox);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -25,6 +26,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TFormConfigDepositos), &FormConfigDepositos);
 		Application->CreateForm(__classid(TFormNuevoPedido), &FormNuevoPedido);
 		Application->CreateForm(__classid(TFormEditMaterias), &FormEditMaterias);
+		Application->CreateForm(__classid(TAboutBox), &AboutBox);
 		Application->Run();
 	}
 	catch (Exception &exception)
