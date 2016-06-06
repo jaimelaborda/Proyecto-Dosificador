@@ -151,14 +151,6 @@ void __fastcall TFormDosificador::FormPaint(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormDosificador::Button1Click(TObject *Sender)
-{
-	UnicodeString errorText="prueba kaka";
-	//Application->MessageBox(kaka, MB_YESNO);
-	MessageDlg(errorText,mtConfirmation,mbYesNo,0);
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TFormDosificador::ButtonRealizarPedidoClick(TObject *Sender)
 {
 	FormNuevoPedido->ShowModal();

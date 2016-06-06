@@ -71,7 +71,7 @@ void __fastcall TFormSimulacion::TrackBarDeposito5Change(TObject *Sender)
 void __fastcall TFormSimulacion::TrackBarBasculaChange(TObject *Sender)
 {
 	bascula.Peso(TrackBarBascula->Position);
-	LabelBascula->Caption=AnsiString(bascula.Peso()/100) + " %";
+	LabelBascula->Caption=AnsiString(bascula.Peso()/10) + " %";
 }
 //---------------------------------------------------------------------------
 

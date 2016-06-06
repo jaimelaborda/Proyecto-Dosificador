@@ -6,10 +6,6 @@
 #include "UnitDatos.h"
 #include "UnitFormDosificador.h"
 
-void Control (void)
-{
-   //woajajajajxd
-}
 
 
 

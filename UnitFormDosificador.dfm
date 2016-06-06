@@ -22671,22 +22671,13 @@ object FormDosificador: TFormDosificador
       OnClick = ButtonConfigurarDepositosClick
     end
   end
-  object Button1: TButton
-    Left = 336
-    Top = 520
-    Width = 75
-    Height = 25
-    Caption = 'Button1'
-    TabOrder = 1
-    OnClick = Button1Click
-  end
   object GroupBox1: TGroupBox
     Left = 1037
     Top = 570
     Width = 236
     Height = 107
     Caption = 'Panel de Pedidos'
-    TabOrder = 2
+    TabOrder = 1
     object ShapeProceso: TShape
       Left = 180
       Top = 54
@@ -22728,7 +22719,7 @@ object FormDosificador: TFormDosificador
     Max = 10000
     Orientation = pbVertical
     Position = 50
-    TabOrder = 3
+    TabOrder = 2
   end
   object TimerGUI: TTimer
     Interval = 100
